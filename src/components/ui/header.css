@@ -1,0 +1,60 @@
+.navbar{
+    font-family: Poppins,sans-serif;
+    display: flex;
+    flex-direction : row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttons{
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+
+}
+.button-33 {
+    background-color: #FAF4D3;
+    border-radius: 100px;
+    color: #606C38;
+    cursor: pointer;
+    display: inline-block;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-left: 50px;
+}
+
+.button-33:hover {
+    transform: scale(1.05) rotate(-1deg);
+}
+
+.button_billeterie {
+    background-color: #FF9E1F;
+    border-radius: 100px;
+    color: #606C38;
+    cursor: pointer;
+    display: inline-block;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-left: 50px;
+}
+
+.button_billeterie:hover {
+    transform: scale(1.05) rotate(-1deg);
+}
