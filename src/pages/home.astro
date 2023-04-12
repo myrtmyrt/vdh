@@ -11,7 +11,15 @@ import logo from '../../public/logoVdh.png'
 
 <Layout title="Welcome to VDH.">
 	<main>
-		<img src={nature} alt="background" class="background">
+		<div class="w-screen h-screen relative overflow-hidden">
+			<img id="one" src={one} alt="background image" class="background z-50" />
+			<img id="two" src={two} alt="background image" class="background z-40" />
+			<img id="three" src={three} alt="background image" class="background z-30 "/>
+			<img id="four" src={four} alt="background image" class="background z-20"/>
+			<img id="five" src={five} alt="background image" class="background z-10"/>
+			<img id="six" src={six} alt="background image" class="background z-[5]"/>
+			<img id="seven" src={seven} alt="background image" class="background z-0"/>
+		</div>
 		<img src={logo} alt="logo vdh" class="logo  h-48 w-48 absolute left-1/2 -translate-x-1/2 top-14">
 		<div class="main">
 			<h1>Welcome to <span class="text-gradient">VDH</span></h1>
