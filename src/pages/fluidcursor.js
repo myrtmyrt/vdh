@@ -111,21 +111,21 @@ export function startSimulation(canvasId, svgId) {
     angleVelocity += (lastClientX - clientX) * 0.005;
     // set canvas position to cursor
     beerCanvas.style.left = `${clientX}px`;
-    beerCanvas.style.top = `${window.scrollY+event.clientY}px`;
+    beerCanvas.style.top = `${window.scrollY + event.clientY}px`;
     // set svg position to cursor
     beerSvg.style.left = `${clientX}px`;
-    beerSvg.style.top = `${window.scrollY+event.clientY}px`;
+    beerSvg.style.top = `${window.scrollY + event.clientY}px`;
     lastClientX = clientX;
   });
 
   // on scroll, we update the positions of canvas and svg
-    body.addEventListener("wheel", (event) => {
+  body.addEventListener("wheel", (event) => {
     const { clientX } = event;
 
     // set canvas position to cursor
-    beerCanvas.style.top = `${window.scrollY+event.clientY}px`;
+    beerCanvas.style.top = `${window.scrollY + event.clientY}px`;
     // set svg position to cursor
-    beerSvg.style.top = `${window.scrollY+event.clientY}px`;
+    beerSvg.style.top = `${window.scrollY + event.clientY}px`;
     lastClientX = clientX;
-    });
+  });
 }
