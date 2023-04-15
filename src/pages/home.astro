@@ -1,164 +1,235 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import './home.css'
-import Header from '../components/ui/header.astro'
-import MapSection from '../components/ui/organisms/MapSection/MapSection.astro'
-import FAQ from '../components/ui/organisms/FAQ/FAQ.astro'
-import Footer from '../components/ui/footer.astro'
-import nature from '../../public/nature.jpg'
-import one from '../assets/1.png'
-import two from '../assets/2.png'
-import three from '../assets/3.png'
-import four from '../assets/4.png'
-import five from '../assets/5.png'
-import six from '../assets/6.png'
-import seven from '../assets/7.png'
+import Layout from "../layouts/Layout.astro";
+import "./home.css";
+import Header from "../components/ui/header.astro";
+import MapSection from "../components/ui/organisms/MapSection/MapSection.astro";
+import FAQ from "../components/ui/organisms/FAQ/FAQ.astro";
+import Footer from "../components/ui/footer.astro";
+import nature from "../../public/nature.jpg";
+import one from "../assets/1.png";
+import two from "../assets/2.png";
+import three from "../assets/3.png";
+import four from "../assets/4.png";
+import five from "../assets/5.png";
+import six from "../assets/6.png";
+import seven from "../assets/7.png";
 
-import logo from '../../public/logoVdh.png'
+import logo from "../../public/logoVdh.png";
 ---
 
 <Layout title="Welcome to VDH.">
-	<canvas id="c" style="transform:translate(-50%, -50%) translate(30px, 50px) scale(0.1);z-index:100;"></canvas>
-	<svg id="beersvg" style="transform: translate(-50%, -51%) translate(30px, 50px) scale(0.2);z-index:100;" xmlns="http://www.w3.org/2000/svg" width="400px" height="300px" viewBox="0 0 64.005 64.005"
-		 data-name="Empty Beer Glass" >
-		<rect fill="none" height="64.005" id="rect2317-38" transform="translate(0 0)" width="64"/>
-		<g id="g2182" transform="translate(12.775 3.578)">
-			<path d="M32.912,55.012v-9.8c3.925-.231,5.649-1.864,7.2-4.539,1.678-2.895,1.875-12.886,1.877-12.986V10.646a.975.975,0,0,0-1.008-.935H32.912V1.657H1.66V55.012H32.912m.541-42.75h5.7c.3,0,.545.332.545.738l0,14.136c0,.08-.108,9.079-1.015,11.367a5.341,5.341,0,0,1-5.231,3.608c-.3,0-.545-.332-.545-.738l0-28.372c0-.407.245-.738.545-.738m-.541,45H1.66A2.255,2.255,0,0,1-.6,55.012V1.657A2.255,2.255,0,0,1,1.66-.6H32.912a2.255,2.255,0,0,1,2.257,2.253v5.8h5.809a3.231,3.231,0,0,1,3.265,3.188V27.683q0,.02,0,.04c0,.026-.05,2.625-.319,5.607-.562,6.225-1.54,7.913-1.861,8.467-1.36,2.35-3.157,4.582-6.893,5.38v7.834a2.255,2.255,0,0,1-2.257,2.253Zm2.253-42.75,0,24.934a3.366,3.366,0,0,0,1.422-1.775c.072-.183.445-1.318.692-5.8.132-2.4.162-4.566.165-4.748l0-12.608H35.165Z"
-				  id="path2184" transform="translate(0.596 0.596)"/>
-		</g>
-		<g id="g2186" transform="translate(20.525 12.022)">
-			<path d="M25.839,93.161v24.558" fill="none" id="path2188" stroke="#000000" stroke-linecap="round"
-				  stroke-width="1.8" transform="translate(-25.839 -93.161)"/>
-		</g>
-		<g id="g2190" transform="translate(20.525 42.195)">
-			<path d="M25.839,100.546V107" fill="none" id="path2192" stroke="#000000" stroke-linecap="round"
-				  stroke-width="1.8" transform="translate(-25.839 -100.546)"/>
-		</g>
-	</svg>
-	<main>
-		<div class="w-screen h-screen relative overflow-hidden">
-			<img id="one" src={one} alt="background image" class="background z-50" />
-			<img id="two" src={two} alt="background image" class="background z-40" />
-			<img id="three" src={three} alt="background image" class="background z-30 "/>
-			<img id="four" src={four} alt="background image" class="background z-20"/>
-			<img id="five" src={five} alt="background image" class="background z-10"/>
-			<img id="six" src={six} alt="background image" class="background z-[5]"/>
-			<img id="seven" src={seven} alt="background image" class="background z-0"/>
-		</div>
-		<img src={logo} alt="logo vdh" class="logo  h-48 w-48 absolute left-1/2 -translate-x-1/2 top-14">
+  <canvas
+    id="beerCanvas"
+    style="position: absolute; transform: translate(12px, 18px); z-index: 100"
+    width="33"
+    height="55"></canvas>
+  <svg
+    id="beersvg"
+    style="position: absolute; z-index: 100"
+    xmlns="http://www.w3.org/2000/svg"
+    width="60px"
+    height="90px"
+    viewBox="0 0 64.005 64.005"
+    data-name="Empty Beer Glass"
+  >
+    <rect
+      fill="none"
+      height="64.005"
+      id="rect2317-38"
+      transform="translate(0 0)"
+      width="64"></rect>
+    <g id="g2182" transform="translate(12.775 3.578)">
+      <path
+        d="M32.912,55.012v-9.8c3.925-.231,5.649-1.864,7.2-4.539,1.678-2.895,1.875-12.886,1.877-12.986V10.646a.975.975,0,0,0-1.008-.935H32.912V1.657H1.66V55.012H32.912m.541-42.75h5.7c.3,0,.545.332.545.738l0,14.136c0,.08-.108,9.079-1.015,11.367a5.341,5.341,0,0,1-5.231,3.608c-.3,0-.545-.332-.545-.738l0-28.372c0-.407.245-.738.545-.738m-.541,45H1.66A2.255,2.255,0,0,1-.6,55.012V1.657A2.255,2.255,0,0,1,1.66-.6H32.912a2.255,2.255,0,0,1,2.257,2.253v5.8h5.809a3.231,3.231,0,0,1,3.265,3.188V27.683q0,.02,0,.04c0,.026-.05,2.625-.319,5.607-.562,6.225-1.54,7.913-1.861,8.467-1.36,2.35-3.157,4.582-6.893,5.38v7.834a2.255,2.255,0,0,1-2.257,2.253Zm2.253-42.75,0,24.934a3.366,3.366,0,0,0,1.422-1.775c.072-.183.445-1.318.692-5.8.132-2.4.162-4.566.165-4.748l0-12.608H35.165Z"
+        id="path2184"
+        transform="translate(0.596 0.596)"></path>
+    </g>
+    <g id="g2186" transform="translate(20.525 12.022)">
+      <path
+        d="M25.839,93.161v24.558"
+        fill="none"
+        id="path2188"
+        stroke="#000000"
+        stroke-linecap="round"
+        stroke-width="1.8"
+        transform="translate(-25.839 -93.161)"></path>
+    </g>
+    <g id="g2190" transform="translate(20.525 42.195)">
+      <path
+        d="M25.839,100.546V107"
+        fill="none"
+        id="path2192"
+        stroke="#000000"
+        stroke-linecap="round"
+        stroke-width="1.8"
+        transform="translate(-25.839 -100.546)"></path>
+    </g>
+  </svg>
+  <main>
+    <div class="w-screen h-screen relative overflow-hidden">
+      <img id="one" src={one} alt="background image" class="background z-50" />
+      <img id="two" src={two} alt="background image" class="background z-40" />
+      <img
+        id="three"
+        src={three}
+        alt="background image"
+        class="background z-30"
+      />
+      <img
+        id="four"
+        src={four}
+        alt="background image"
+        class="background z-20"
+      />
+      <img
+        id="five"
+        src={five}
+        alt="background image"
+        class="background z-10"
+      />
+      <img id="six" src={six} alt="background image" class="background z-[5]" />
+      <img
+        id="seven"
+        src={seven}
+        alt="background image"
+        class="background z-0"
+      />
+    </div>
+    <img
+      src={logo}
+      alt="logo vdh"
+      class="logo h-48 w-48 absolute left-1/2 -translate-x-1/2 top-14"
+    />
 
-		<div class="timeline ml-1/2">
-			<div class="outer">
-				<div class="card">
-					<div class="info">
-						<h3 class="title">Title 1</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-					</div>
-				</div>
-				<div class="card">
-					<div class="info">
-						<h3 class="title">Title 2</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-					</div>
-				</div>
-				<div class="card">
-					<div class="info">
-						<h3 class="title">Title 3</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-					</div>
-				</div>
-				<div class="card">
-					<div class="info">
-						<h3 class="title">Title 4</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-					</div>
-				</div>
-				<div class="card">
-					<div class="info">
-						<h3 class="title">Title 5</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-					</div>
-				</div>
-			</div>
-		</div>
+    <div class="timeline ml-1/2">
+      <div class="outer">
+        <div class="card">
+          <div class="info">
+            <h3 class="title">Title 1</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="info">
+            <h3 class="title">Title 2</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="info">
+            <h3 class="title">Title 3</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="info">
+            <h3 class="title">Title 4</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="info">
+            <h3 class="title">Title 5</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-
-
-		Resources1× 0.5× 0.25×Rerun
-		<div class="main relative z-60" >
-			<h1>Welcome to <span class="text-gradient">VDH</span></h1>
-			<MapSection/>
-			<FAQ question="La course est-elle ouverte aux personnes à mobilité réduite ?" reponse="Oui, la course est ouverte aux personnes à mobilité réduite"/>
-			<hr>
-			<FAQ question="Comment récupérer mon dossard ?" reponse="Au départ de la course"/>
-			<hr>
-			<FAQ question="Où mettre mes affaires pendant la course ? Y aura-t-il des casiers ?" reponse="Oui, il y a des vestiaires pour poser des petites affaires, mais pas de places pour les gros sacs à dos."/>
-			<hr>
-			<FAQ question="A quelle heure dois-je arriver le jour de la course ?" reponse="Pour le départ marche entre 14h et 15h et pour le départ cours entre 15h et 16h"/>
-			<hr>
-			<FAQ question="Puis-je marcher pendant la course ?" reponse="Oui, il est possible de marcher pendant la course"/>
-			<hr>
-			<FAQ question="A qui est destinée cette course ?" reponse="La course est destinée à tous : enfants, parents, adolescents, adultes, sénior"/>
-		</div>
-		<Footer/>
-	</main>
+    Resources1× 0.5× 0.25×Rerun
+    <div class="main relative z-60">
+      <h1>Welcome to <span class="text-gradient">VDH</span></h1>
+      <MapSection />
+      <FAQ
+        question="La course est-elle ouverte aux personnes à mobilité réduite ?"
+        reponse="Oui, la course est ouverte aux personnes à mobilité réduite"
+      />
+      <hr />
+      <FAQ
+        question="Comment récupérer mon dossard ?"
+        reponse="Au départ de la course"
+      />
+      <hr />
+      <FAQ
+        question="Où mettre mes affaires pendant la course ? Y aura-t-il des casiers ?"
+        reponse="Oui, il y a des vestiaires pour poser des petites affaires, mais pas de places pour les gros sacs à dos."
+      />
+      <hr />
+      <FAQ
+        question="A quelle heure dois-je arriver le jour de la course ?"
+        reponse="Pour le départ marche entre 14h et 15h et pour le départ cours entre 15h et 16h"
+      />
+      <hr />
+      <FAQ
+        question="Puis-je marcher pendant la course ?"
+        reponse="Oui, il est possible de marcher pendant la course"
+      />
+      <hr />
+      <FAQ
+        question="A qui est destinée cette course ?"
+        reponse="La course est destinée à tous : enfants, parents, adolescents, adultes, sénior"
+      />
+    </div>
+    <Footer />
+  </main>
 </Layout>
-
+<script src="./fluidcursor.js"></script>
 <script>
-	// script for FAQ items
-	for (const faqDiv of document.querySelectorAll('.faq')) {
-		const buttonChild = faqDiv.querySelector('#button')
-		buttonChild.addEventListener('click',()=>{
-			if (faqDiv.style.maxHeight === "30px") {
-				faqDiv.style.maxHeight = "60px"
-			} else {
-				faqDiv.style.maxHeight = "30px"
-			}
-		})
-	}
+  // script for FAQ items
+  for (const faqDiv of document.querySelectorAll(".faq")) {
+    const buttonChild = faqDiv.querySelector("#button");
+    buttonChild.addEventListener("click", () => {
+      if (faqDiv.style.maxHeight === "30px") {
+        faqDiv.style.maxHeight = "60px";
+      } else {
+        faqDiv.style.maxHeight = "30px";
+      }
+    });
+  }
 
-	// script for parallax (ids one to seven)
-	const parallax = (id, speed) => {
-		const element = document.getElementById(id)
-		element.style.transform = 'translateY(' + window.scrollY * speed + 'px)'
-	}
+  // script for parallax (ids one to seven)
+  const parallax = (id, speed) => {
+    const element = document.getElementById(id);
+    element.style.transform = "translateY(" + window.scrollY * speed + "px)";
+  };
 
-	// beer cursor
-	import {fluid} from "./fluidcursor.js"
-	// move the canvas to the mouse position
-	const body = document.querySelector('body');
-	const canvas = document.getElementsByTagName('canvas')[0];
-	const beersvg = document.getElementById('beersvg');
-	body.style.position = 'relative';
-	let lastClientX, lastClientY;
+  window.addEventListener("scroll", (event) => {
+    parallax("one", 0.1);
+    parallax("two", 0.2);
+    parallax("three", 0.3);
+    parallax("four", 0.4);
+    parallax("five", 0.5);
+    parallax("six", 0.6);
+    parallax("seven", 0.7);
+  });
 
-	body.addEventListener('mousemove', (event) => {
-		canvas.style.position = 'absolute';
-		canvas.style.left = event.x + 'px';
-		canvas.style.top = event.y+window.scrollY + 'px';
-		if (lastClientX && lastClientY) {
-			fluid.moveParticles((event.x - lastClientX) * -0.1, (event.y - lastClientY) * -0.1);
-		}
-		lastClientX = event.x;
-		lastClientY = event.y;
+  import {startSimulation} from './fluidcursor.js'
 
-		beersvg.style.position = 'absolute';
-		beersvg.style.left = event.x + 'px';
-		beersvg.style.top = event.y+window.scrollY + 'px';
-	});
-
-	window.addEventListener('scroll', (event) => {
-		parallax('one', 0.1)
-		parallax('two', 0.2)
-		parallax('three', 0.3)
-		parallax('four', 0.4)
-		parallax('five', 0.5)
-		parallax('six', 0.6)
-		parallax('seven', 0.7)
-
-		// set beer cursor also
-		beersvg.style.top = lastClientY + window.scrollY + 'px';
-		canvas.style.top = lastClientY + window.scrollY + 'px';
-	})
+  // start beer cursor simulation
+  startSimulation("beerCanvas", 'beersvg')
 </script>
-
