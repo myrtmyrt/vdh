@@ -7,7 +7,11 @@
 }
 
 main{
-    background: #606C38;
+    background: whitesmoke;
+}
+
+h1{
+    color: #606C38;
 }
 .main {
     padding-left: 60px;
@@ -89,12 +93,12 @@ body {
 
 .timeline{
     display: flex;
-    align-content: center;
+    justify-content: center;
 }
 /* Card container */
 .card {
     position: relative;
-    max-width: 400px;
+    max-width: 100%;
 }
 
 /* setting padding based on even or odd */
@@ -160,7 +164,7 @@ body {
 
 /* Title of the card */
 .title {
-    color: orangered;
+    color: #D95D39;
     position: relative;
 }
 
@@ -172,7 +176,7 @@ body {
     height: 10px;
     background: white;
     border-radius: 999px;
-    border: 3px solid orangered;
+    border: 3px solid #D95D39;
 }
 
 /* text right if the card is even  */
@@ -188,4 +192,12 @@ body {
 /* setting dot to the right if the card is odd */
 .card:nth-child(even) > .info > .title::before {
     right: -45px;
+}
+
+.logoNavbar{
+    @apply left-1 translate-x-0 top-1 w-20 h-20
+}
+
+.presentation{
+    color: #FAF4D3;
 }

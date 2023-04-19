@@ -1,15 +1,11 @@
 ---
 import './header.css'
-import logoVDH from '../../../public/logoVdh.png'
 ---
 
-<div class="navbar">
-    <img src={logoVDH} alt="Logo Vdh" style="width: 110px">
-    <div class="buttons">
-        <button class="button-33" role="button">L'évènement</button>
-        <button class="button-33" role="button">Le parcours</button>
-        <button class="button-33" role="button">Village d'arrivée</button>
-        <button class="button-33" role="button">FAQ</button>
-        <button class="button_billeterie" role="button">Acheter un billet</button>
-    </div>
-</div>
+<header class="flex space-x-4 top-0 left-0 fixed z-50 h-20 items-center -translate-y-64 transition-all bg-gray-50 w-screen justify-center">
+    <a class="onglet" role="button">L'évènement</a>
+    <a class="onglet" role="button">Le parcours</a>
+    <a class="onglet" role="button">Village d'arrivée</a>
+    <a class="onglet" role="button">FAQ</a>
+    <button class="button_billeterie" role="button">Acheter un billet</button>
+</header>

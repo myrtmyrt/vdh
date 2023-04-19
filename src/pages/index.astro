@@ -1,6 +1,217 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import "./home.css";
+import Header from "../components/ui/header.astro";
+import MapSection from "../components/ui/organisms/MapSection/MapSection.astro";
+import FAQ from "../components/ui/organisms/FAQ/FAQ.astro";
+import Footer from "../components/ui/footer.astro";
+import nature from "../../public/nature.jpg";
+import one from "../assets/1.png";
+import two from "../assets/2.png";
+import three from "../assets/3.png";
+import four from "../assets/4.png";
+import five from "../assets/5.png";
+import six from "../assets/6.png";
+import seven from "../assets/7.png";
 
+import logo from "../../public/logoVdh.png";
+import BeerCursor from "../components/BeerCursor.astro";
 ---
-<div>
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
 
-</div>
+<Layout>
+    <BeerCursor/>
+    <main>
+        <div>
+            <div class="w-screen h-screen relative overflow-hidden">
+                <img id="one" src={one} alt="background image" class="background z-50"/>
+                <img id="two" src={two} alt="background image" class="background z-40"/>
+                <img
+                        id="three"
+                        src={three}
+                        alt="background image"
+                        class="background z-30"
+                />
+                <img
+                        id="four"
+                        src={four}
+                        alt="background image"
+                        class="background z-20"
+                />
+                <img
+                        id="five"
+                        src={five}
+                        alt="background image"
+                        class="background z-10"
+                />
+                <img id="six" src={six} alt="background image" class="background z-[5]"/>
+                <img
+                        id="seven"
+                        src={seven}
+                        alt="background image"
+                        class="background z-0"
+                />
+            </div>
+            <Header class="absolute object-top z-50"/>
+            <img
+                    src={logo}
+                    alt="logo vdh"
+                    id="logo"
+                    class="h-48 w-48 fixed left-1/2 -translate-x-1/2 top-14 z-50 transition-all"
+            />
+
+
+            <div class="main relative z-60">
+                <h1>Welcome to VDH</h1>
+                <div class="presentation">
+                    <h3 class="vignets">Coucou</h3>
+                    <p>
+                        La Voie du Houblon est une course à pied d’une longueur de 10km, reliant les villes de
+                        Compiègne et d'Armancourt. Il s’agit d’une course caritative qui rassemblera 500 personnes et
+                        dont
+                        les
+                        bénéfices sont intégralement reversés à une association solidaire : Le Fil d’Ariane.
+                    </p>
+                    <div data-aos="fade-right">
+                    <span class="icon">
+                        <link rel="stylesheet"
+                              href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+                    <span class="font-bold">10km</span> de course</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" timeline ml-1/2 ">
+                <div class="outer">
+                    <div class="card">
+                        <div class="info">
+                            <h3 class="title">13h</h3>
+                            <p>
+                                Village de départ
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="info">
+                            <h3 class="title">Title 2</h3>
+                            <p>
+                                Début du parcours marche
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="info">
+                            <h3 class="title">Title 3</h3>
+                            <p>
+                                Début du parcours course
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="info">
+                            <h3 class="title">Title 4</h3>
+                            <p>
+                                Début des navettes retour
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="info">
+                            <h3 class="title">Title 5</h3>
+                            <p>
+                                Fermeture du village associatif
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+                    <MapSection/>
+                    <h1>FAQ</h1>
+                    <FAQ
+                            question="La course est-elle ouverte aux personnes à mobilité réduite ?"
+                            reponse="Oui, la course est ouverte aux personnes à mobilité réduite"
+                    />
+                    <hr/>
+                    <FAQ
+                            question="Comment récupérer mon dossard ?"
+                            reponse="Au départ de la course"
+                    />
+                    <hr/>
+                    <FAQ
+                            question="Où mettre mes affaires pendant la course ? Y aura-t-il des casiers ?"
+                            reponse="Oui, il y a des vestiaires pour poser des petites affaires, mais pas de places pour les gros sacs à dos."
+                    />
+                    <hr/>
+                    <FAQ
+                            question="A quelle heure dois-je arriver le jour de la course ?"
+                            reponse="Pour le départ marche entre 14h et 15h et pour le départ cours entre 15h et 16h"
+                    />
+                    <hr/>
+                    <FAQ
+                            question="Puis-je marcher pendant la course ?"
+                            reponse="Oui, il est possible de marcher pendant la course"
+                    />
+                    <hr/>
+                    <FAQ
+                            question="A qui est destinée cette course ?"
+                            reponse="La course est destinée à tous : enfants, parents, adolescents, adultes, sénior"
+                    />
+                    <h1>Le village Associatif</h1>
+                    <h2>Bar et restauration</h2>
+                    <h1>Nos Partenaires</h1>
+                    <h1>Le plan du parcours</h1>
+                </div>
+                <Footer/>
+    </main>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</Layout>
+
+<script>
+    // script for FAQ items
+    for (const faqDiv of document.querySelectorAll(".faq")) {
+        const buttonChild = faqDiv.querySelector("#button");
+        buttonChild.addEventListener("click", () => {
+            if (faqDiv.style.maxHeight === "30px") {
+                faqDiv.style.maxHeight = "60px";
+            } else {
+                faqDiv.style.maxHeight = "30px";
+            }
+        });
+    }
+
+    // script for parallax (ids one to seven)
+    const parallax = (id, speed) => {
+        const element = document.getElementById(id);
+        element.style.transform = "translateY(" + window.scrollY * speed + "px)";
+    };
+
+    window.addEventListener("scroll", (event) => {
+        parallax("one", 0.1);
+        parallax("two", 0.2);
+        parallax("three", 0.3);
+        parallax("four", 0.4);
+        parallax("five", 0.5);
+        parallax("six", 0.6);
+        parallax("seven", 0.7);
+    });
+
+    const logoVdh = document.querySelector("#logo");
+    const header = document.querySelector("header");
+    // Move logo to navbar on scroll
+    window.addEventListener("scroll", (event) => {
+            if (window.scrollY > 0) {
+                logoVdh.classList.add("logoNavbar");
+                header.classList.remove("-translate-y-64");
+
+
+            } else {
+                logoVdh.classList.remove("logoNavbar");
+                header.classList.add("-translate-y-64");
+
+            }
+        }
+    )
+</script>
