@@ -7,24 +7,22 @@
 }
 
 main{
-    background: whitesmoke;
+    background: rgb(249 250 251);
 }
 
-h1{
-    color: #606C38;
-}
 .main {
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-top: 40px;
+    padding-left: 100px;
+    padding-right: 100px;
     padding-bottom: 30px;
     font-family: Poppins, sans-serif;
     background: #606C38;
 }
 h1 {
+    color: #606C38;
     font-size: 3rem;
     font-weight: 800;
     margin: 0;
-    color: #FAF4D3;
 }
 .text-gradient {
     background-image: var(--accent-gradient);
@@ -156,8 +154,8 @@ body {
 .info {
     display: flex;
     flex-direction: column;
-    background: #333;
-    color: gray;
+    background: #283618;
+    color: whitesmoke;
     border-radius: 10px;
     padding: 10px;
 }
@@ -198,6 +196,48 @@ body {
     @apply left-1 translate-x-0 top-1 w-20 h-20
 }
 
+.date{
+   color: #212121;
+}
+
 .presentation{
     color: #FAF4D3;
+}
+
+.blabla{
+    @apply opacity-0 opacity-100
+}
+
+.point{
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+.boite-tarif{
+    margin: 30px;
+    padding: 55px;
+    background: whitesmoke;
+    border-radius: 5px;
+
+}
+
+.button_billeterie {
+    background-color: #D95D39;
+    border-radius: 100px;
+    color: #FAF4D3;
+    cursor: pointer;
+    display: inline-block;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    max-width: 200px;
+}
+
+.button_billeterie:hover {
+    transform: scale(1.05) rotate(-1deg);
 }
