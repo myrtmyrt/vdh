@@ -11,14 +11,14 @@
 
 }
 
-a{
+.onglet{
     position: relative;
     text-decoration: none;
     color: #212121;
     letter-spacing: 0.5px;
     padding: 0 10px;
 }
-a:after{
+.onglet:after{
     content: "";
     position: absolute;
     background-color: #D95D39;
@@ -28,10 +28,10 @@ a:after{
     bottom: -10px;
     transition: 0.3s;
 }
-a:hover{
+.onglet:hover{
     color: #D95D39;
 }
-a:hover:after{
+.onglet:hover:after{
     width: 100%;
 }
 
@@ -50,7 +50,6 @@ a:hover:after{
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    margin-left: 50px;
 }
 
 .button_billeterie:hover {

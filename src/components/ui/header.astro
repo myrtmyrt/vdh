@@ -1,11 +1,20 @@
 ---
 import './header.css'
+import logo from "../../../public/logoVdh.png";
 ---
 
-<header class="flex space-x-4 top-0 left-0 fixed z-50 h-20 items-center -translate-y-64 transition-all bg-gray-50 w-screen justify-center">
-    <a class="onglet" role="button">L'évènement</a>
-    <a class="onglet" role="button">Le parcours</a>
-    <a class="onglet" role="button">Village d'arrivée</a>
-    <a class="onglet" role="button">FAQ</a>
-    <button class="button_billeterie" role="button">Acheter un billet</button>
+<header class="w-screen -translate-y-64 transition-all bg-gray-50 fixed z-50 h-20 w-screen top-0 flex justify-between items-center px-10">
+    <img
+            src={logo}
+            alt="logo vdh"
+            id="logo"
+            class="h-16 w-16"
+    />
+    <div class="flex space-x-4 top-0 left-0 justify-end h-full items-center">
+        <a class="onglet" role="button" href="#presentation">L'évènement</a>
+        <a class="onglet" role="button">Le parcours</a>
+        <a class="onglet" role="button">Village d'arrivée</a>
+        <a class="onglet" role="button">FAQ</a>
+        <button class="button_billeterie" role="button">Acheter un billet</button>
+    </div>
 </header>

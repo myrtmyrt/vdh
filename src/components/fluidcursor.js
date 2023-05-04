@@ -47,7 +47,7 @@ function drawBeer(canvas) {
   }
 }
 
-// we update the angle of the liquid surface and the bubbles position
+// we up the angle of the liquid surface and the bubbles position
 function update(canvas) {
   // compute velocity ( inversely proportional to the angle )
   angleVelocity += -angle / 100;

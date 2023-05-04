@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import "./home.css";
 import Header from "../components/ui/header.astro";
 import MapSection from "../components/ui/organisms/MapSection/MapSection.astro";
-import FAQ from "../components/ui/organisms/FAQ/FAQ.astro";
+import Questions from "../components/ui/organisms/FAQ/Questions.astro";
 import Footer from "../components/ui/footer.astro";
 import one from "../assets/1.png";
 import two from "../assets/2.png";
@@ -21,203 +21,229 @@ import {Icon} from "astro-icon";
 
 <Layout>
     <!--<BeerCursor/>-->
-    <main>
-        <div>
+    <main class="bg-white">
+        <div class="absolute">
             <div class="w-screen h-screen relative overflow-hidden">
-                <img id="one" src={one} alt="background image" class="background z-50"/>
-                <img id="two" src={two} alt="background image" class="background z-40"/>
+                <img id="one" src={one} alt="background image" class="background z-50 object-cover"/>
+                <img id="two" src={two} alt="background image" class="background z-40 object-cover"/>
                 <img
                         id="three"
                         src={three}
                         alt="background image"
-                        class="background z-30"
+                        class="background z-30 object-cover"
                 />
                 <img
                         id="four"
                         src={four}
                         alt="background image"
-                        class="background z-20"
+                        class="background z-20 object-cover"
                 />
-                <h1 id="date" class="fixed left-1/2 -translate-x-1/2 top-80 z-20 text-center text-emerald-950">
-                    La voie du Houblon<br/>
-                    11 juin 2023
-                </h1>
+                <div id="date"
+                     class="fixed left-1/2 -translate-x-1/2 top-36 z-20 text-center text-emerald-950 max-w-5xl">
+                    <h1 class="text-5xl mb-1">La Voie du Houblon</h1>
+                    <h1 class="text-5xl mb-1">11 juin 2023</h1>
+                    <h3 class="text-2xl">Un parcours <span class="text-[#D95D39] font-bold"> caritatif</span> de <span class="text-[#D95D39] font-bold"> 10km</span> plein d'<span class="text-[#D95D39] font-bold">activités</span> à faire en marchant, ou en courant!</h3>
+                </div>
                 <img
                         id="five"
                         src={five}
                         alt="background image"
-                        class="background z-10"
+                        class="background z-10 object-cover"
                 />
-                <img id="six" src={six} alt="background image" class="background z-[5]"/>
+                <img id="six" src={six} alt="background image" class="background z-[5] object-cover"/>
                 <img
                         id="seven"
                         src={seven}
                         alt="background image"
-                        class="background z-0"
+                        class="background z-0 object-cover"
                 />
+
+                <div class="absolute top-full left-1/2 z-50 -translate-x-1/2 -translate-y-36 flex flex-col items-center gap-10">
+                    <button class="button_billeterie w-40" role="button">Acheter un billet</button>
+                    <a href="#presentation">
+                        <Icon name="ic:round-expand-more" class="w-12 h-12 text-black animate-bounce"/>
+                    </a>
+                </div>
+
             </div>
             <Header class="absolute object-top z-50"/>
-            <img
-                    src={logo}
-                    alt="logo vdh"
-                    id="logo"
-                    class="h-48 w-48 fixed left-1/2 -translate-x-1/2 top-14 z-50 transition-all duration-1000"
-            />
 
-
-            <div class="main relative z-60">
+            <div class="main relative z-60 max-w-8xl z-40 pl-20 pr-20">
+                <svg xmlns="http://www.w3.org/2000/svg">
+                    <!-- filterUnits is required to prevent clipping the blur outside the viewBox -->
+                    <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
+                        <!-- We only want horizontal blurring. x: 100, y: 0 -->
+                        <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
+                    </filter>
+                </svg>
+                <!-- We use a custom attribute to set the text that the pseudo element should display and blur. In this case, we use the first character of the word. -->
+                <div class="text-center pb-12 flex flex-row justify-center justify-items-center">
+                    <span filter-content="S" class="spanTitle">L'événement</span>
+                </div>
                 <div class="presentation">
-                    <div class="flex flex-row justify-items-center space-x-36">
+                    <div class="flex flex-col justify-items-start pt-12 pb-12">
                         <div>
-                            <p>
-                                La Voie du Houblon est une course à pied d’une longueur de 10km, reliant les villes de
-                                Compiègne et d'Armancourt. Il s’agit d’une course caritative qui rassemblera 500
-                                personnes et
-                                dont
-                                les
-                                bénéfices sont intégralement reversés à une association solidaire : Le Fil d’Ariane.
-                            </p>
+                            <div class="flex flex-row justify-center justify-items-start space-x-20">
+                                <div class="flex flex-col justify-start gap-2">
+                                    <div class="point flex flex-row justify-start" data-aos="fade-right">
+                                        <Icon name="ic:baseline-directions-run" class="fill-{FAF4D3} w-12 h-12"/>
+                                        Un parcours de 10km
+                                    </div>
+                                    <div class="point flex flex-row justify-start" data-aos="fade-right">
+                                        <Icon name="mdi:charity" class="fill-{FAF4D3} w-10 h-10"/>
+                                         Un évenement caritatif
+                                    </div>
+                                    <div class="point flex flex-row justify-start" data-aos="fade-right">
+                                        <Icon name="icon-park-outline:beer" class="fill-{FAF4D3} w-11 h-11"/>
+                                        4 stands de dégustations
+                                    </div>
+                                    <div class="point flex flex-row justify-start" data-aos="fade-right">
+                                        <Icon name="ic:baseline-directions-run" class="fill-{FAF4D3} w-12 h-12"/>
+                                        Des animations sur le parcours
+                                    </div>
+                                    <div class="point flex flex-row justify-start" data-aos="fade-right">
+                                        <Icon name="ic:baseline-directions-run" class="fill-{FAF4D3} w-12 h-12"/>
+                                        Un village associatif à l'arrivée
+                                    </div>
+                                </div>
+                                <img src={course} class="h-96"/>
+                            </div>
                             <br/>
-                            <div class="point flex flex-row" data-aos="fade-right">
-                                <Icon name="ic:baseline-directions-run" class="fill-{FAF4D3} w-12 h-12"/>
-                                Un parcours de 10km
-                            </div>
-                            <div class="point flex flex-row" data-aos="fade-right">
-                                <Icon name="ic:baseline-directions-run" class="fill-{FAF4D3} w-12 h-12"/>
-                                4 stands de dégustations
-                            </div>
-                            <div class="point flex flex-row" data-aos="fade-right">
-                                <Icon name="ic:baseline-directions-run" class="fill-{FAF4D3} w-12 h-12"/>
-                                Des animations
-                            </div>
-                            <div class="point flex flex-row" data-aos="fade-right">
-                                <Icon name="ic:baseline-directions-run" class="fill-{FAF4D3} w-12 h-12"/>
-                                Un village associatif à l'arrivée
-                            </div>
-                            <div class="point flex flex-row" data-aos="fade-right">
-                                <Icon name="ic:baseline-directions-run" class="fill-{FAF4D3} w-12 h-12"/>
-                                Un évenement caritatif
+                            <div class="flex flex-row pt-12 justify-center space-x-20 pr-20 pl-2O">
+                                <div class="w-full">
+                                    <iframe class="w-full h-96 max-w-2xl" src="https://www.youtube.com/embed/sDj9aRUb0pU" title="YouTube video player"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen>
+                                    </iframe>
+                                </div>
+                                <p style="font-size: 16px; line-height: 24px" class="text-black text-justify">
+                                    La Voie du Houblon fait son retour le dimanche 11 juin 2023 pour sa 9e édition ! Le
+                                    parcours reliera les villes de Compiègne et Armancourt en 10 km.
+                                    <br/>
+                                    <br/>
+                                    Cette année, nous verserons tous les
+                                    bénéfices au Fil d'Ariane (https://www.fil-dariane.org/). Il s'agit d'une association
+                                    venant en aide aux personnes ayant des déficiences visuelles.
+                                    <br/>
+                                    <br/>
+                                    Le parcours sera ponctué par quatre stands qui proposeront des
+                                    dégustations de bières ainsi que de la nourriture et des boissons fraîches.
+                                    <br/>
+                                    <br/>
+                                    Le parcours peut être effectué en courant ou en marchant mais également en rollers, en
+                                    skateboard, en trottinette, en caddie (le caddie le mieux décoré recevra un lot !) etc.
+                                    Seul les engins à moteur sont interdits (trottinettes électriques par exemple) !
+                                    <br/>
+                                    <br/>
+                                    Nous vous conseillons de venir déguisé e•s!
+                                </p>
                             </div>
                         </div>
-                        <img src={course} class="h-96"/>
                     </div>
                 </div>
 
             </div>
+            <Questions class="pr-20 pl-20"/>
 
-            <div class=" timeline ml-1/2 ">
-                <div class="outer">
-                    <div class="card">
-                        <div class="info">
-                            <h3 class="title">12h30</h3>
-                            <p>
-                                Village de départ
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="info">
-                            <h3 class="title">14h30</h3>
-                            <p>
-                                Départ du parcours marche
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="info">
-                            <h3 class="title">15h30</h3>
-                            <p>
-                                Départ du parcours course
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="info">
-                            <h3 class="title">17h30-20H</h3>
-                            <p>
-                                Navettes retour
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="info">
-                            <h3 class="title">Title 5</h3>
-                            <p>
-                                Fermeture du village associatif
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="flex flex-col justify-center bg-[#D95D39] items-center">
-                <h1>Tarif</h1>
+                <h1 class="text-white">Tarif</h1>
                 <div class="flex flex-row items-center justify-center space-x-40 text-center">
                     <div class="boite-tarif">
-                        Adulte<br/>
-                        18€
+                        Majeur<br/>
+                        16,5€
                     </div>
                     <div class="boite-tarif">
-                        Enfant<br/>
-                        14€
+                        Mineur<br/>
+                        10€
                     </div>
                     <div class="boite-tarif">
                         Cotisant BDE<br/>
-                        18€
+                        14,5€
                     </div>
                     <div class="boite-tarif">
                         Etudiant<br/>
-                        18€
+                        15,5€
                     </div>
                 </div>
             </div>
             <MapSection/>
-            <h1>FAQ</h1>
-            <FAQ
-                    question="La course est-elle ouverte aux personnes à mobilité réduite ?"
-                    reponse="Oui, la course est ouverte aux personnes à mobilité réduite"
-            />
-            <hr/>
-            <FAQ
-                    question="Comment récupérer mon dossard ?"
-                    reponse="Au départ de la course"
-            />
-            <hr/>
-            <FAQ
-                    question="Où mettre mes affaires pendant la course ? Y aura-t-il des casiers ?"
-                    reponse="Oui, il y a des vestiaires pour poser des petites affaires, mais pas de places pour les gros sacs à dos."
-            />
-            <hr/>
-            <FAQ
-                    question="A quelle heure dois-je arriver le jour de la course ?"
-                    reponse="Pour le départ marche entre 14h et 15h et pour le départ cours entre 15h et 16h"
-            />
-            <hr/>
-            <FAQ
-                    question="Puis-je marcher pendant la course ?"
-                    reponse="Oui, il est possible de marcher pendant la course"
-            />
-            <hr/>
-            <FAQ
-                    question="A qui est destinée cette course ?"
-                    reponse="La course est destinée à tous : enfants, parents, adolescents, adultes, sénior"
-            />
-            <h1>Le village Associatif</h1>
-            <h2>Bar et restauration</h2>
-            <h1>Nos Partenaires</h1>
-            <h1>Le plan du parcours</h1>
+            <div class="pt-12 pb-12">
+                <h1 class="text-center pb-12">Nos Partenaires</h1>
+                <!--<div class="flex flex-col jus text-center justify-items-center m-28">
+                    <p class="text-xl">Alors on t'a convaincu ?</p>
+                    <button class="button_billeterie" role="button">Achete ton billet !</button>
+                </div>!-->
+                <div class="flex flex-col space-x-20 justify-center justify-items-center items-center">
+                    <div class="flex flex-row space-x-20 justify-center justify-items-center items-center">
+                        <article class="p-20">
+                            <a class="flex flex-col justify-center text-center" href="https://www.instagram.com/picsart.utc/"
+                               target="_blank">
+                                <div class="img-container">
+                                    <img style="width: 250px"
+                                         src="https://assos.utc.fr/images/assos/74d60020-3af5-11e9-b433-95be57eb3284/1551316151.jpg">
+                                </div>
+                                <p> Pics'Art </p>
+                            </a>
+
+                        </article>
+                        <article>
+                            <a class="flex flex-col justify-center text-center" href="https://www.facebook.com/DecibelsUTC/"
+                               target="_blank">
+                                <div class="img-container">
+                                    <img style="width: 200px"
+                                         src="https://assos.utc.fr/images/assos/722b5410-3af5-11e9-bec2-a144d884ae44/1559292260.png">
+                                </div>
+                                <p> Décibels </p>
+                            </a>
+                        </article>
+                        <article>
+                            <a class="flex flex-col justify-center text-center"
+                               href="https://www.youtube.com/user/SousSolProductions" target="_blank">
+                                <div class="img-container">
+                                    <img style="width: 200px"
+                                         src="https://assos.utc.fr/images/assos/706559f0-3af5-11e9-b946-310daef158fe/1551316143.png">
+                                </div>
+                                <p> Sous sol Productions </p>
+                            </a>
+                        </article>
+                    </div>
+                    <div class="flex flex-row space-x-20 justify-center justify-items-center items-center">
+                        <article>
+                            <a class="flex flex-col justify-center text-center"
+                               href="https://www.youtube.com/user/SousSolProductions" target="_blank">
+                                <div class="img-container">
+                                    <img style="width: 200px"
+                                         src="https://assos.utc.fr/images/assos/6dff8940-3af5-11e9-a76b-d5944de919ff/1586527271.png">
+                                </div>
+                                <p>BDE</p>
+                            </a>
+                        </article>
+                        <article>
+                            <a class="flex flex-col justify-center text-center"
+                               href="https://www.youtube.com/user/SousSolProductions" target="_blank">
+                                <div class="img-container">
+                                    <img style="width: 200px"
+                                         src="https://assos.utc.fr/images/assos/6e2dc2f0-3af5-11e9-aed8-514dc3b25814/1551316140.png">
+                                </div>
+                                <p>PSEC</p>
+                            </a>
+                        </article>
+                        <article>
+                            <a class="flex flex-col justify-center text-center"
+                               href="https://www.youtube.com/user/SousSolProductions" target="_blank">
+                                <div class="img-container">
+                                    <img style="width: 200px"
+                                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAsI8g5nVqWVJxS9DBYIFOXQlrz8iY3fkdXzmP9k5hikqeUlcjLD6PDLeQn5QDoTQaHwE&usqp=CAU">
+                                </div>
+                                <p>Le fil d'Ariane</p>
+                            </a>
+                        </article>
+                    </div>
+                </div>
+            </div>
+
+            <Footer/>
         </div>
-        <section>
-            <iframe class="w-screen" src="https://www.youtube.com/embed/sDj9aRUb0pU" title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-            </iframe>
-        </section>
-        <div class="flex flex-col jus text-center justify-items-center m-28">
-            <p class="text-xl">Alors on t'a convaincu ?</p>
-            <button class="button_billeterie" role="button">Achete ton billet !</button>
-        </div>
-        <Footer/>
     </main>
 </Layout>
 
@@ -230,11 +256,12 @@ import {Icon} from "astro-icon";
     // script for FAQ items
     for (const faqDiv of document.querySelectorAll(".faq")) {
         const buttonChild = faqDiv.querySelector("#button");
+        const responseChild = faqDiv.querySelector("#contenu");
         buttonChild.addEventListener("click", () => {
-            if (faqDiv.style.maxHeight === "30px") {
-                faqDiv.style.maxHeight = "60px";
+            if (!responseChild.style.maxHeight) {
+                responseChild.style.maxHeight = "25rem";
             } else {
-                faqDiv.style.maxHeight = "30px";
+                responseChild.style.maxHeight = "";
             }
         });
     }
@@ -246,11 +273,10 @@ import {Icon} from "astro-icon";
     };
 
 
-    const logoVdh = document.querySelector("#logo");
     const header = document.querySelector("header");
 
     const date = document.querySelector("#date");
-    let logoOnNavbar = false
+    let navbarShown = false
 
     window.addEventListener("scroll", (event) => {
         // parallax("one", 0.1);
@@ -261,23 +287,21 @@ import {Icon} from "astro-icon";
         parallax("six", 0.6);
         parallax("seven", 0.7);
 
-        // Move logo to navbar on scroll
-        if (window.scrollY > 0 && !logoOnNavbar) {
-            logoVdh.classList.add("logoNavbar");
+        // show navbar on scroll
+        if (window.scrollY > 0 && !navbarShown) {
             header.classList.remove("-translate-y-64");
-            logoOnNavbar = true;
-        } else if (window.scrollY === 0 && logoOnNavbar) {
-            logoVdh.classList.remove("logoNavbar");
+            navbarShown = true;
+        } else if (window.scrollY === 0 && navbarShown) {
             header.classList.add("-translate-y-64");
-            logoOnNavbar = false;
+            navbarShown = false;
         }
 
-        if (window.scrollY > 220) {
+        if (window.scrollY > 500) {
             date.hidden = true;
-        } else if (window.scrollY > 50) {
-            date.style.opacity = 1
         } else {
             date.hidden = false;
         }
     });
 </script>
+
+
