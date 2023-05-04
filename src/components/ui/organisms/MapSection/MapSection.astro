@@ -1,12 +1,71 @@
----
-import ReactMapboxGl, {Marker, Popup} from 'react-mapbox-gl'
-import mapboxgl from 'mapbox-gl'
-import './MapSection.css'
+<div id="map" class="h-96">
+</div>
 
-const Map = ReactMapboxGl({
-    accessToken: "pk.eyJ1Ijoidm9pZWR1aG91YmxvbiIsImEiOiJjbGc3emx2bTAwYzA5M2twaTRweXRseXIzIn0.QGSfcxLMnxALVfhrit4zVQ",
-})
+<script>
+    import mapboxgl from 'mapbox-gl';
+    mapboxgl.accessToken = 'pk.eyJ1Ijoidm9pZWR1aG91YmxvbiIsImEiOiJjbGc3emx2bTAwYzA5M2twaTRweXRseXIzIn0.QGSfcxLMnxALVfhrit4zVQ';
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/voieduhoublon/clg80m7oj004001latbnf7yqo', // style URL
+        center: [ 2.809818,49.410638 ], // starting position [lng, lat]
+        zoom: 12 // starting zoom
+    });
 
-const center = [2.8204554319381714, 49.415936076931224]
----
+    map.setMaxZoom(15);
+    map.setMinZoom(10);
+
+    const maxBounds = new mapboxgl.LngLatBounds(
+        new mapboxgl.LngLat(2.5, 49.2), // southwest corner [lng, lat]
+        new mapboxgl.LngLat(3.1, 49.6) // northeast corner [lng, lat]
+    );
+    map.setMaxBounds(maxBounds);
+
+    const circuit = {
+        type: 'FeatureCollection',
+        features: [
+            {
+                type: 'Feature',
+                geometry: {
+                    type: 'LineString',
+                    coordinates: [
+                        [2.809818, 49.410638],
+                        [2.811529, 49.413217],
+                        [2.813279, 49.414636],
+                        [2.817247, 49.414836],
+                        [2.819182, 49.413524],
+                        [2.818381, 49.411204],
+                        [2.816883, 49.409421],
+                        [2.812983, 49.408223],
+                        [2.810201, 49.408162],
+                        [2.806871, 49.409303],
+                        [2.805155, 49.410987],
+                        [2.806671, 49.413429],
+                        [2.809818, 49.410638]
+                    ]
+                }
+            }
+        ]
+    };
+
+    map.on('load', function () {
+        // add the circuit layer to the map
+        map.addLayer({
+            id: 'circuit',
+            type: 'line',
+            source: {
+                type: 'geojson',
+                data: circuit
+            },
+            layout: {
+                'line-join': 'round',
+                'line-cap': 'round'
+            },
+            paint: {
+                'line-color': '#000',
+                'line-width': 5
+            }
+        });
+    });
+
+</script>
 
