@@ -68,17 +68,18 @@ import {Icon} from "astro-icon";
             </div>
             <Header class="absolute object-top z-50"/>
 
-            <div class="main relative z-60 max-w-8xl z-40 pl-20 pr-20">
-                <svg xmlns="http://www.w3.org/2000/svg">
-                    <!-- filterUnits is required to prevent clipping the blur outside the viewBox -->
-                    <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
-                        <!-- We only want horizontal blurring. x: 100, y: 0 -->
-                        <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
-                    </filter>
-                </svg>
+            <div class="main relative max-w-8xl z-50 pl-20 pr-20">
+
                 <!-- We use a custom attribute to set the text that the pseudo element should display and blur. In this case, we use the first character of the word. -->
                 <div class="text-center pb-12 flex flex-row justify-center justify-items-center">
-                    <span filter-content="S" class="spanTitle">L'événement</span>
+                    <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
+                        <!-- filterUnits is required to prevent clipping the blur outside the viewBox -->
+                        <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
+                            <!-- We only want horizontal blurring. x: 100, y: 0 -->
+                            <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
+                        </filter>
+                    </svg>
+                    <span filter-content="S" class="spanTitle">L'évènement</span>
                 </div>
                 <div class="presentation">
                     <div class="flex flex-col justify-items-start pt-12 pb-12">
