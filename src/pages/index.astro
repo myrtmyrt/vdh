@@ -4,6 +4,7 @@ import "./home.css";
 import Header from "../components/ui/header.astro";
 import MapSection from "../components/ui/organisms/MapSection/MapSection.astro";
 import Questions from "../components/ui/organisms/FAQ/Questions.astro";
+import Timeline from "../components/ui/organisms/Timeline/Timeline.astro"
 import Footer from "../components/ui/footer.astro";
 import one from "../assets/1.png";
 import two from "../assets/2.png";
@@ -15,6 +16,7 @@ import seven from "../assets/7.png";
 
 import logo from "../../public/logoVdh.png";
 import course from "../../src/assets/course.jpg"
+import psec from "../../src/assets/psec.png"
 import BeerCursor from "../components/BeerCursor.astro";
 import {Icon} from "astro-icon";
 ---
@@ -39,10 +41,12 @@ import {Icon} from "astro-icon";
                         class="background z-20 object-cover"
                 />
                 <div id="date"
-                     class="fixed left-1/2 -translate-x-1/2 top-36 z-20 text-center text-emerald-950 max-w-5xl">
+                     class="fixed left-1/2 -translate-x-1/2 top-28 z-20 text-center text-emerald-950 max-w-5xl">
                     <h1 class="text-5xl mb-1">La Voie du Houblon</h1>
                     <h1 class="text-5xl mb-1">11 juin 2023</h1>
-                    <h3 class="text-2xl">Un parcours <span class="text-[#D95D39] font-bold"> caritatif</span> de <span class="text-[#D95D39] font-bold"> 10km</span> plein d'<span class="text-[#D95D39] font-bold">activités</span> à faire en marchant, ou en courant!</h3>
+                    <h3 class="text-2xl">Un parcours <span class="text-[#D95D39] font-bold"> caritatif</span> de <span
+                            class="text-[#D95D39] font-bold"> 10km</span> plein d'<span
+                            class="text-[#D95D39] font-bold">activités</span> à faire en marchant, ou en courant!</h3>
                 </div>
                 <img
                         id="five"
@@ -59,30 +63,30 @@ import {Icon} from "astro-icon";
                 />
 
                 <div class="absolute top-full left-1/2 z-50 -translate-x-1/2 -translate-y-36 flex flex-col items-center gap-10">
-                    <button class="button_billeterie w-40" role="button">Acheter un billet</button>
+                    <button class="button_billeterie text-lg w-52" role="button">Acheter un billet</button>
                     <a href="#presentation">
-                        <Icon name="ic:round-expand-more" class="w-12 h-12 text-black animate-bounce"/>
+                        <Icon name="ic:round-expand-more" class="w-12 h-12 text-[#D95D39] animate-bounce"/>
                     </a>
                 </div>
 
             </div>
             <Header class="absolute object-top z-50"/>
 
-            <div class="main relative max-w-8xl z-50 pl-20 pr-20">
+            <div class="main relative max-w-8xl z-40">
 
-                <!-- We use a custom attribute to set the text that the pseudo element should display and blur. In this case, we use the first character of the word. -->
-                <div class="text-center pb-12 flex flex-row justify-center justify-items-center">
-                    <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
-                        <!-- filterUnits is required to prevent clipping the blur outside the viewBox -->
-                        <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
-                            <!-- We only want horizontal blurring. x: 100, y: 0 -->
-                            <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
-                        </filter>
-                    </svg>
-                    <span filter-content="S" class="spanTitle">L'évènement</span>
-                </div>
                 <div class="presentation">
-                    <div class="flex flex-col justify-items-start pt-12 pb-12">
+                    <!-- We use a custom attribute to set the text that the pseudo element should display and blur. In this case, we use the first character of the word. -->
+                    <div class="text-center pb-12 flex flex-row justify-center justify-items-center">
+                        <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
+                            <!-- filterUnits is required to prevent clipping the blur outside the viewBox -->
+                            <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
+                                <!-- We only want horizontal blurring. x: 100, y: 0 -->
+                                <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
+                            </filter>
+                        </svg>
+                        <span filter-content="S" class="spanTitle pb-0">L'évènement</span>
+                    </div>
+                    <div class="flex flex-col justify-items-start pb-12">
                         <div>
                             <div class="flex flex-row justify-center justify-items-start space-x-20">
                                 <div class="flex flex-col justify-start gap-2">
@@ -92,48 +96,41 @@ import {Icon} from "astro-icon";
                                     </div>
                                     <div class="point flex flex-row justify-start" data-aos="fade-right">
                                         <Icon name="mdi:charity" class="fill-{FAF4D3} w-10 h-10"/>
-                                         Un évenement caritatif
+                                        Un évenement caritatif
                                     </div>
                                     <div class="point flex flex-row justify-start" data-aos="fade-right">
                                         <Icon name="icon-park-outline:beer" class="fill-{FAF4D3} w-11 h-11"/>
                                         4 stands de dégustations
                                     </div>
                                     <div class="point flex flex-row justify-start" data-aos="fade-right">
-                                        <Icon name="ic:baseline-directions-run" class="fill-{FAF4D3} w-12 h-12"/>
+                                        <Icon name="mdi:dice-6" class="fill-{FAF4D3} w-11 h-11"/>
                                         Des animations sur le parcours
                                     </div>
                                     <div class="point flex flex-row justify-start" data-aos="fade-right">
                                         <Icon name="ic:baseline-directions-run" class="fill-{FAF4D3} w-12 h-12"/>
-                                        Un village associatif à l'arrivée
+                                        Un village associatif au départ et à l'arrivé
                                     </div>
                                 </div>
                                 <img src={course} class="h-96"/>
                             </div>
                             <br/>
-                            <div class="flex flex-row pt-12 justify-center space-x-20 pr-20 pl-2O">
+                            <div class="flex flex-row pt-12 justify-center space-x-20">
                                 <div class="w-full">
-                                    <iframe class="w-full h-96 max-w-2xl" src="https://www.youtube.com/embed/sDj9aRUb0pU" title="YouTube video player"
+                                    <iframe class="w-full h-96 max-w-2xl"
+                                            src="https://www.youtube.com/embed/sDj9aRUb0pU" title="YouTube video player"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                             allowfullscreen>
                                     </iframe>
                                 </div>
-                                <p style="font-size: 16px; line-height: 24px" class="text-black text-justify">
+                                <p style="font-size: 16px; line-height: 24px" class="text-black text-justify max-w-xl">
                                     La Voie du Houblon fait son retour le dimanche 11 juin 2023 pour sa 9e édition ! Le
                                     parcours reliera les villes de Compiègne et Armancourt en 10 km.
                                     <br/>
                                     <br/>
                                     Cette année, nous verserons tous les
-                                    bénéfices au Fil d'Ariane (https://www.fil-dariane.org/). Il s'agit d'une association
+                                    bénéfices au Fil d'Ariane (https://www.fil-dariane.org/). Il s'agit d'une
+                                    association
                                     venant en aide aux personnes ayant des déficiences visuelles.
-                                    <br/>
-                                    <br/>
-                                    Le parcours sera ponctué par quatre stands qui proposeront des
-                                    dégustations de bières ainsi que de la nourriture et des boissons fraîches.
-                                    <br/>
-                                    <br/>
-                                    Le parcours peut être effectué en courant ou en marchant mais également en rollers, en
-                                    skateboard, en trottinette, en caddie (le caddie le mieux décoré recevra un lot !) etc.
-                                    Seul les engins à moteur sont interdits (trottinettes électriques par exemple) !
                                     <br/>
                                     <br/>
                                     Nous vous conseillons de venir déguisé e•s!
@@ -142,13 +139,37 @@ import {Icon} from "astro-icon";
                         </div>
                     </div>
                 </div>
-
+                <div class="text-center pb-12 flex flex-row justify-center justify-items-center">
+                    <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
+                        <!-- filterUnits is required to prevent clipping the blur outside the viewBox -->
+                        <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
+                            <!-- We only want horizontal blurring. x: 100, y: 0 -->
+                            <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
+                        </filter>
+                    </svg>
+                    <span filter-content="S" class="spanTitle">Le parcours</span>
+                </div>
+                <div class="flex flex-row">
+                    <p style="font-size: 16px; line-height: 24px" class="text-black text-justify max-w-xl">
+                        Le parcours sera ponctué par quatre stands qui proposeront des
+                        dégustations de bières ainsi que de la nourriture et des boissons fraîches.
+                        <br/>
+                        <br/>
+                        Le parcours peut être effectué en courant ou en marchant mais également en rollers, en
+                        skateboard, en trottinette, en caddie (le caddie le mieux décoré recevra un lot !) etc.
+                        Seul les engins à moteur sont interdits (trottinettes électriques par exemple) !
+                        <br/>
+                        <br/>
+                        Nous vous conseillons de venir déguisé e•s!
+                    </p>
+                    <MapSection/>
+                </div>
             </div>
-            <Questions class="pr-20 pl-20"/>
-
-            <div class="flex flex-col justify-center bg-[#D95D39] items-center">
-                <h1 class="text-white">Tarif</h1>
-                <div class="flex flex-row items-center justify-center space-x-40 text-center">
+            <div class="flex flex-col justify-center bg-[#D95D39] items-center pt-12 pb-12">
+                <h1 class="text-white pb-2">Tarifs</h1>
+                <h2 class="text-white text-2xl pb-2">Le billet comprend la dégustation de 4 bières, des softs et de la
+                    nourriture sur la parcours et la navette retour.</h2>
+                <div class="flex flex-row items-center justify-center space-x-24 text-center">
                     <div class="boite-tarif">
                         Majeur<br/>
                         16,5€
@@ -165,55 +186,26 @@ import {Icon} from "astro-icon";
                         Etudiant<br/>
                         15,5€
                     </div>
+                    <div class="boite-tarif">
+                        Famille<br/>
+                        50€
+                    </div>
                 </div>
             </div>
-            <MapSection/>
+            <Questions/>
             <div class="pt-12 pb-12">
-                <h1 class="text-center pb-12">Nos Partenaires</h1>
+                <h1 class="text-center">Nos Partenaires</h1>
                 <!--<div class="flex flex-col jus text-center justify-items-center m-28">
                     <p class="text-xl">Alors on t'a convaincu ?</p>
                     <button class="button_billeterie" role="button">Achete ton billet !</button>
                 </div>!-->
-                <div class="flex flex-col space-x-20 justify-center justify-items-center items-center">
-                    <div class="flex flex-row space-x-20 justify-center justify-items-center items-center">
-                        <article class="p-20">
-                            <a class="flex flex-col justify-center text-center" href="https://www.instagram.com/picsart.utc/"
-                               target="_blank">
-                                <div class="img-container">
-                                    <img style="width: 250px"
-                                         src="https://assos.utc.fr/images/assos/74d60020-3af5-11e9-b433-95be57eb3284/1551316151.jpg">
-                                </div>
-                                <p> Pics'Art </p>
-                            </a>
-
-                        </article>
-                        <article>
-                            <a class="flex flex-col justify-center text-center" href="https://www.facebook.com/DecibelsUTC/"
-                               target="_blank">
-                                <div class="img-container">
-                                    <img style="width: 200px"
-                                         src="https://assos.utc.fr/images/assos/722b5410-3af5-11e9-bec2-a144d884ae44/1559292260.png">
-                                </div>
-                                <p> Décibels </p>
-                            </a>
-                        </article>
-                        <article>
-                            <a class="flex flex-col justify-center text-center"
-                               href="https://www.youtube.com/user/SousSolProductions" target="_blank">
-                                <div class="img-container">
-                                    <img style="width: 200px"
-                                         src="https://assos.utc.fr/images/assos/706559f0-3af5-11e9-b946-310daef158fe/1551316143.png">
-                                </div>
-                                <p> Sous sol Productions </p>
-                            </a>
-                        </article>
-                    </div>
+                <div class="flex flex-col space-x-10 justify-center justify-items-center items-center">
                     <div class="flex flex-row space-x-20 justify-center justify-items-center items-center">
                         <article>
                             <a class="flex flex-col justify-center text-center"
                                href="https://www.youtube.com/user/SousSolProductions" target="_blank">
                                 <div class="img-container">
-                                    <img style="width: 200px"
+                                    <img style="width: 130px"
                                          src="https://assos.utc.fr/images/assos/6dff8940-3af5-11e9-a76b-d5944de919ff/1586527271.png">
                                 </div>
                                 <p>BDE</p>
@@ -223,7 +215,7 @@ import {Icon} from "astro-icon";
                             <a class="flex flex-col justify-center text-center"
                                href="https://www.youtube.com/user/SousSolProductions" target="_blank">
                                 <div class="img-container">
-                                    <img style="width: 200px"
+                                    <img style="width: 130px"
                                          src="https://assos.utc.fr/images/assos/6e2dc2f0-3af5-11e9-aed8-514dc3b25814/1551316140.png">
                                 </div>
                                 <p>PSEC</p>
@@ -233,10 +225,44 @@ import {Icon} from "astro-icon";
                             <a class="flex flex-col justify-center text-center"
                                href="https://www.youtube.com/user/SousSolProductions" target="_blank">
                                 <div class="img-container">
-                                    <img style="width: 200px"
+                                    <img style="width: 130px"
                                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAsI8g5nVqWVJxS9DBYIFOXQlrz8iY3fkdXzmP9k5hikqeUlcjLD6PDLeQn5QDoTQaHwE&usqp=CAU">
                                 </div>
                                 <p>Le fil d'Ariane</p>
+                            </a>
+                        </article>
+                        <article class="p-20">
+                            <a class="flex flex-col justify-center text-center"
+                               href="https://www.instagram.com/picsart.utc/"
+                               target="_blank">
+                                <div class="img-container">
+                                    <img style="width: 130px"
+                                         src="https://assos.utc.fr/images/assos/74d60020-3af5-11e9-b433-95be57eb3284/1551316151.jpg">
+                                </div>
+                                <p> Pics'Art </p>
+                            </a>
+                        </article>
+                    </div>
+                    <div class="flex flex-row space-x-20 justify-center justify-items-center items-center">
+                        <article>
+                            <a class="flex flex-col justify-center text-center"
+                               href="https://www.facebook.com/DecibelsUTC/"
+                               target="_blank">
+                                <div class="img-container">
+                                    <img style="width: 130px"
+                                         src="https://assos.utc.fr/images/assos/722b5410-3af5-11e9-bec2-a144d884ae44/1559292260.png">
+                                </div>
+                                <p> Décibels </p>
+                            </a>
+                        </article>
+                        <article>
+                            <a class="flex flex-col justify-center text-center"
+                               href="https://www.youtube.com/user/SousSolProductions" target="_blank">
+                                <div class="img-container">
+                                    <img style="width: 130px"
+                                         src="https://assos.utc.fr/images/assos/706559f0-3af5-11e9-b946-310daef158fe/1551316143.png">
+                                </div>
+                                <p> Sous sol Productions </p>
                             </a>
                         </article>
                     </div>

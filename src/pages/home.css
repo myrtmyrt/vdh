@@ -53,8 +53,9 @@ hr{
 }
 
 .boite-tarif{
+    font-size:larger;
     margin: 30px;
-    padding: 55px;
+    padding: 50px;
     background: white  ;
     border-radius: 5px;
 
