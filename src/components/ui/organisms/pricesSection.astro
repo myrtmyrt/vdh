@@ -1,0 +1,33 @@
+---
+import PriceItem from "../atoms/priceItem.astro";
+---
+<div class="flex flex-col justify-center bg-[#D95D39] items-center pt-12 pb-12">
+    <h1 class="text-white pb-2">Tarifs</h1>
+    <h2 class="text-white text-2xl pb-2">Le billet comprend la dégustation de 4 bières, des softs et de la
+        nourriture sur la parcours et la navette retour.</h2>
+    <h2 class="text-white text-2xl pb-2">
+        Le tarif famille correspond à 2 places adultes et 2 places mineurs.
+    </h2>
+    <div class="flex flex-row items-center justify-center text-center">
+        <PriceItem>
+            Majeur•e<br/>
+            16,5€
+        </PriceItem>
+        <PriceItem>
+            Mineur•e<br/>
+            10€
+        </PriceItem>
+        <PriceItem>
+            Cotisant•e BDE<br/>
+            14,5€
+        </PriceItem>
+        <PriceItem>
+            Non Cotisant•e<br/>
+            15,5€
+        </PriceItem>
+        <PriceItem>
+            Famille<br/>
+            50€
+        </PriceItem>
+    </div>
+</div>

@@ -21,13 +21,6 @@ h1 {
     font-weight: 800;
     margin: 0;
 }
-hr{
-    color: #FAF4D3;
-    width: 1250px;
-    align-content: center;
-    margin-left: 80px;
-}
-
 
 .background{
     position: absolute;
@@ -50,36 +43,6 @@ hr{
 .point{
     font-weight: bolder;
     font-size: 26px;
-}
-
-.boite-tarif{
-    font-size:larger;
-    margin: 30px;
-    padding: 50px;
-    background: white  ;
-    border-radius: 5px;
-
-}
-
-.button {
-    background-color: #D95D39;
-    border-radius: 100px;
-    color: #FAF4D3;
-    cursor: pointer;
-    display: inline-block;
-    padding: 7px 20px;
-    text-align: center;
-    text-decoration: none;
-    transition: all 250ms;
-    border: 0;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    max-width: 200px;
-}
-
-.button:hover {
-    transform: scale(1.05) rotate(-1deg);
 }
 
 .spanTitle{

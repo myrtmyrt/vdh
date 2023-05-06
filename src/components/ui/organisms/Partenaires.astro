@@ -1,0 +1,79 @@
+---
+import psec from "../../../assets/psec.png";
+---
+<div class="pt-20 pb-20">
+    <div class="text-center pb-12 flex flex-wrap justify-evenly justify-items-center">
+        <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
+            <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
+                <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
+            </filter>
+        </svg>
+        <span filter-content="N" class="spanTitle pb-0">Nos partenaires</span>
+    </div>
+    <div class="flex flex-col space-x-10 justify-center justify-items-center items-center">
+        <div class="flex flex-wrap justify-evenly items-center gap-14">
+            <article>
+                <a class="flex flex-col justify-center text-center"
+                   href="https://www.instagram.com/bde_utc/" target="_blank">
+                    <div class="img-container">
+                        <img style="width: 130px"
+                             src="https://assos.utc.fr/images/assos/6dff8940-3af5-11e9-a76b-d5944de919ff/1586527271.png">
+                    </div>
+                    <p>BDE</p>
+                </a>
+            </article>
+            <article>
+                <a class="flex flex-col justify-center text-center"
+                   href="https://www.instagram.com/psec_utc/" target="_blank">
+                    <div class="img-container">
+                        <img style="width: 130px"
+                             src={psec}>
+                    </div>
+                    <p>PSEC</p>
+                </a>
+            </article>
+            <article>
+                <a class="flex flex-col justify-center text-center"
+                   href="https://www.youtube.com/user/SousSolProductions" target="_blank">
+                    <div class="img-container">
+                        <img style="width: 130px"
+                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAsI8g5nVqWVJxS9DBYIFOXQlrz8iY3fkdXzmP9k5hikqeUlcjLD6PDLeQn5QDoTQaHwE&usqp=CAU">
+                    </div>
+                    <p>Le fil d'Ariane</p>
+                </a>
+            </article>
+            <article>
+                <a class="flex flex-col justify-center text-center"
+                   href="https://www.instagram.com/picsart.utc/"
+                   target="_blank">
+                    <div class="img-container">
+                        <img style="width: 130px"
+                             src="https://assos.utc.fr/images/assos/74d60020-3af5-11e9-b433-95be57eb3284/1551316151.jpg">
+                    </div>
+                    <p> Pics'Art </p>
+                </a>
+            </article>
+            <article>
+                <a class="flex flex-col justify-center text-center"
+                   href="https://www.facebook.com/DecibelsUTC/"
+                   target="_blank">
+                    <div class="img-container">
+                        <img style="width: 130px"
+                             src="https://assos.utc.fr/images/assos/722b5410-3af5-11e9-bec2-a144d884ae44/1559292260.png">
+                    </div>
+                    <p> Décibels </p>
+                </a>
+            </article>
+            <article>
+                <a class="flex flex-col justify-center text-center"
+                   href="https://www.youtube.com/user/SousSolProductions" target="_blank">
+                    <div class="img-container">
+                        <img style="width: 130px"
+                             src="https://assos.utc.fr/images/assos/706559f0-3af5-11e9-b946-310daef158fe/1551316143.png">
+                    </div>
+                    <p> Sous sol Productions </p>
+                </a>
+            </article>
+        </div>
+    </div>
+</div>

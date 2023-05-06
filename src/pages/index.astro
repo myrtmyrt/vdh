@@ -19,6 +19,9 @@ import course from "../../src/assets/course.jpg"
 import psec from "../../src/assets/psec.png"
 import BeerCursor from "../components/BeerCursor.astro";
 import {Icon} from "astro-icon";
+import PresentationLine from "../components/ui/atoms/presentationLine.astro";
+import PricesSection from "../components/ui/organisms/pricesSection.astro";
+import Partenaires from "../components/ui/organisms/Partenaires.astro";
 ---
 
 <Layout>
@@ -63,210 +66,102 @@ import {Icon} from "astro-icon";
                 />
 
                 <div class="absolute top-full left-1/2 z-50 -translate-x-1/2 -translate-y-36 flex flex-col items-center gap-10">
-                    <button class="button_billeterie text-lg w-52" role="button">Acheter un billet</button>
+                    <a href="https://assos.utc.fr/woolly/ventes/179">
+                        <button class="button_billeterie text-lg w-52" role="button">Acheter un billet</button>
+                    </a>
                     <a href="#presentation">
-                        <Icon name="ic:round-expand-more" class="w-12 h-12 text-[#D95D39] animate-bounce"/>
+                        <Icon id="fleche" name="ic:round-expand-more" class="w-12 h-12 text-[#D95D39] animate-bounce"/>
                     </a>
                 </div>
-
+                <span id="debut"></span>
             </div>
+
+            <span id="presentation"></span>
             <Header class="absolute object-top z-50"/>
-            <main class="bg-white absolute z-30">
-                <div class="main relative max-w-8xl z-40 bg-white">
-                    <div class="presentation">
-                        <!-- We use a custom attribute to set the text that the pseudo element should display and blur. In this case, we use the first character of the word. -->
-                        <div class="text-center pb-12 flex flex-row justify-center justify-items-center">
-                            <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
-                                <!-- filterUnits is required to prevent clipping the blur outside the viewBox -->
-                                <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
-                                    <!-- We only want horizontal blurring. x: 100, y: 0 -->
-                                    <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
-                                </filter>
-                            </svg>
-                            <span filter-content="S" class="spanTitle pb-0">L'évènement</span>
-                        </div>
-                        <div class="flex flex-col justify-items-start pb-12">
-                            <div>
-                                <div class="flex flex-row justify-center justify-items-start space-x-20">
-                                    <div class="flex flex-col justify-start gap-2">
-                                        <div class="point flex flex-row justify-start" data-aos="fade-right">
-                                            <Icon name="ic:baseline-directions-run" class="fill-{FAF4D3} w-12 h-12"/>
-                                            Un parcours de 10km
-                                        </div>
-                                        <div class="point flex flex-row justify-start" data-aos="fade-right">
-                                            <Icon name="mdi:charity" class="fill-{FAF4D3} w-10 h-10"/>
-                                            Un évenement caritatif
-                                        </div>
-                                        <div class="point flex flex-row justify-start" data-aos="fade-right">
-                                            <Icon name="icon-park-outline:beer" class="fill-{FAF4D3} w-11 h-11"/>
-                                            4 stands de dégustations
-                                        </div>
-                                        <div class="point flex flex-row justify-start" data-aos="fade-right">
-                                            <Icon name="mdi:dice-6" class="fill-{FAF4D3} w-11 h-11"/>
-                                            Des animations sur le parcours
-                                        </div>
-                                        <div class="point flex flex-row justify-start" data-aos="fade-right">
-                                            <Icon name="ic:baseline-directions-run" class="fill-{FAF4D3} w-12 h-12"/>
-                                            Un village associatif au départ et à l'arrivé
-                                        </div>
-                                    </div>
-                                    <img src={course} class="h-96"/>
-                                </div>
-                                <br/>
-                                <div class="flex flex-row pt-12 justify-center space-x-20">
-                                    <div class="w-full">
-                                        <iframe class="w-full h-96 max-w-xl"
-                                                src="https://www.youtube.com/embed/sDj9aRUb0pU" title="YouTube video player"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                allowfullscreen>
-                                        </iframe>
-                                    </div>
-                                    <p style="font-size: 16px; line-height: 24px" class="text-black text-justify max-w-xl">
-                                        La Voie du Houblon fait son retour le dimanche 11 juin 2023 pour sa 9e édition ! Le
-                                        parcours reliera les villes de Compiègne et Armancourt en 10 km.
-                                        <br/>
-                                        <br/>
-                                        Cette année, nous verserons tous les
-                                        bénéfices au Fil d'Ariane (https://www.fil-dariane.org/). Il s'agit d'une
-                                        association
-                                        venant en aide aux personnes ayant des déficiences visuelles.
-                                        <br/>
-                                        <br/>
-                                        Nous vous conseillons de venir déguisé e•s!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <main class="bg-white absolute z-30 w-screen">
+                <div class="pt-12">
                     <div class="text-center pb-12 flex flex-row justify-center justify-items-center">
                         <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
-                            <!-- filterUnits is required to prevent clipping the blur outside the viewBox -->
                             <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
-                                <!-- We only want horizontal blurring. x: 100, y: 0 -->
                                 <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
                             </filter>
                         </svg>
-                        <span filter-content="S" class="spanTitle">Le parcours</span>
+                        <span filter-content="L" class="spanTitle pb-0">L'évènement</span>
                     </div>
-                    <div class="flex flex-row">
+                    <div class="flex flex-col justify-items-start pb-12">
+                        <div>
+                            <div class="flex flex-row justify-center justify-items-start space-x-20">
+                                <div class="flex flex-col justify-center gap-4">
+                                    <PresentationLine iconName="ic:baseline-directions-run">
+                                        Un parcours de 10km
+                                    </PresentationLine>
+                                    <PresentationLine iconName="mdi:charity">
+                                        Un évenement caritatif
+                                    </PresentationLine>
+                                    <PresentationLine iconName="icon-park-outline:beer">
+                                        4 stands de dégustations
+                                    </PresentationLine>
+                                    <PresentationLine iconName="mdi:dice-6">
+                                        Des animations sur le parcours
+                                    </PresentationLine>
+                                    <PresentationLine iconName="fa-solid:guitar">
+                                        Un village associatif au départ et à l'arrivée
+                                    </PresentationLine>
+                                </div>
+                                <img src={course} class="h-96 object-cover" data-aos="fade-left"/>
+                            </div>
+                            <br/>
+                            <div class="flex flex-row pt-12 justify-center items-center pr-20 pl-20 gap-20">
+                                <div class="w-full" data-aos="zoom-in-down">
+                                    <iframe class="w-full h-96 max-w-2xl"
+                                            src="https://www.youtube.com/embed/sDj9aRUb0pU" title="YouTube video player"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen>
+                                    </iframe>
+                                </div>
+                                <p style="font-size: 16px; line-height: 24px" class="text-black text-justify max-w-xl">
+                                    La Voie du Houblon fait son retour le <span class="font-semibold text-primary">dimanche 11 juin 2023</span> pour sa 9e édition ! Le
+                                    parcours reliera les villes de Compiègne et Armancourt en 10 km.
+                                    <br/>
+                                    <br/>
+                                    Cette année, nous verserons tous les
+                                    bénéfices au <span class="font-semibold text-primary">Fil d'Ariane</span> (https://www.fil-dariane.org/). Il s'agit d'une
+                                    association
+                                    venant en aide aux <span class="font-semibold text-primary">personnes ayant des déficiences visuelles</span>.
+                                    <br/>
+                                    <br/>
+                                    Nous vous conseillons de <span class="font-semibold text-primary">venir déguisé e•s</span>!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center pb-12 flex flex-row justify-center justify-items-center">
+                    <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
+                        <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
+                            <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
+                        </filter>
+                    </svg>
+                    <span filter-content="S" class="spanTitle">Le parcours</span>
+                </div>
+                <div class="pr-20 pl-20">
+                    <div class="flex flex-row justify-center items-center gap-20">
                         <p style="font-size: 16px; line-height: 24px" class="text-black text-justify max-w-xl">
-                            Le parcours sera ponctué par quatre stands qui proposeront des
-                            dégustations de bières ainsi que de la nourriture et des boissons fraîches.
+                            Le parcours sera ponctué par <span class="font-semibold text-primary">quatre stands</span> qui proposeront des
+                            dégustations de <span class="font-semibold text-primary">bières</span>ainsi que de la <span class="font-semibold text-primary">nourriture</span> et des boissons fraîches.
                             <br/>
                             <br/>
-                            Le parcours peut être effectué en courant ou en marchant mais également en rollers, en
+                            Le parcours peut être effectué <span class="font-semibold text-primary">en courant</span> ou <span class="font-semibold text-primary">en marchant</span> mais également en rollers, en
                             skateboard, en trottinette, en caddie (le caddie le mieux décoré recevra un lot !) etc.
                             Seul les engins à moteur sont interdits (trottinettes électriques par exemple) !
-                            <br/>
-                            <br/>
-                            Nous vous conseillons de venir déguisé e•s!
                         </p>
                         <MapSection/>
                     </div>
                 </div>
-                <div class="flex flex-col justify-center bg-[#D95D39] items-center pt-12 pb-12">
-                    <h1 class="text-white pb-2">Tarifs</h1>
-                    <h2 class="text-white text-2xl pb-2">Le billet comprend la dégustation de 4 bières, des softs et de la
-                        nourriture sur la parcours et la navette retour.</h2>
-                    <div class="flex flex-row items-center justify-center space-x-24 text-center">
-                        <div class="boite-tarif">
-                            Majeur<br/>
-                            16,5€
-                        </div>
-                        <div class="boite-tarif">
-                            Mineur<br/>
-                            10€
-                        </div>
-                        <div class="boite-tarif">
-                            Cotisant BDE<br/>
-                            14,5€
-                        </div>
-                        <div class="boite-tarif">
-                            Etudiant<br/>
-                            15,5€
-                        </div>
-                        <div class="boite-tarif">
-                            Famille<br/>
-                            50€
-                        </div>
-                    </div>
-                </div>
+                <Timeline/>
+                <PricesSection/>
                 <Questions/>
-                <div class="pt-12 pb-12">
-                    <h1 class="text-center pb-0">Nos Partenaires</h1>
-                    <!--<div class="flex flex-col jus text-center justify-items-center m-28">
-                        <p class="text-xl">Alors on t'a convaincu ?</p>
-                        <button class="button_billeterie" role="button">Achete ton billet !</button>
-                    </div>!-->
-                    <div class="flex flex-col space-x-10 justify-center justify-items-center items-center">
-                        <div class="flex flex-row space-x-20 justify-center justify-items-center items-center">
-                            <article>
-                                <a class="flex flex-col justify-center text-center"
-                                   href="https://www.youtube.com/user/SousSolProductions" target="_blank">
-                                    <div class="img-container">
-                                        <img style="width: 130px"
-                                             src="https://assos.utc.fr/images/assos/6dff8940-3af5-11e9-a76b-d5944de919ff/1586527271.png">
-                                    </div>
-                                    <p>BDE</p>
-                                </a>
-                            </article>
-                            <article>
-                                <a class="flex flex-col justify-center text-center"
-                                   href="https://www.youtube.com/user/SousSolProductions" target="_blank">
-                                    <div class="img-container">
-                                        <img style="width: 130px"
-                                             src="https://assos.utc.fr/images/assos/6e2dc2f0-3af5-11e9-aed8-514dc3b25814/1551316140.png">
-                                    </div>
-                                    <p>PSEC</p>
-                                </a>
-                            </article>
-                            <article>
-                                <a class="flex flex-col justify-center text-center"
-                                   href="https://www.youtube.com/user/SousSolProductions" target="_blank">
-                                    <div class="img-container">
-                                        <img style="width: 130px"
-                                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAsI8g5nVqWVJxS9DBYIFOXQlrz8iY3fkdXzmP9k5hikqeUlcjLD6PDLeQn5QDoTQaHwE&usqp=CAU">
-                                    </div>
-                                    <p>Le fil d'Ariane</p>
-                                </a>
-                            </article>
-                            <article class="p-20">
-                                <a class="flex flex-col justify-center text-center"
-                                   href="https://www.instagram.com/picsart.utc/"
-                                   target="_blank">
-                                    <div class="img-container">
-                                        <img style="width: 130px"
-                                             src="https://assos.utc.fr/images/assos/74d60020-3af5-11e9-b433-95be57eb3284/1551316151.jpg">
-                                    </div>
-                                    <p> Pics'Art </p>
-                                </a>
-                            </article>
-                        </div>
-                        <div class="flex flex-row space-x-20 justify-center justify-items-center items-center">
-                            <article>
-                                <a class="flex flex-col justify-center text-center"
-                                   href="https://www.facebook.com/DecibelsUTC/"
-                                   target="_blank">
-                                    <div class="img-container">
-                                        <img style="width: 130px"
-                                             src="https://assos.utc.fr/images/assos/722b5410-3af5-11e9-bec2-a144d884ae44/1559292260.png">
-                                    </div>
-                                    <p> Décibels </p>
-                                </a>
-                            </article>
-                            <article>
-                                <a class="flex flex-col justify-center text-center"
-                                   href="https://www.youtube.com/user/SousSolProductions" target="_blank">
-                                    <div class="img-container">
-                                        <img style="width: 130px"
-                                             src="https://assos.utc.fr/images/assos/706559f0-3af5-11e9-b946-310daef158fe/1551316143.png">
-                                    </div>
-                                    <p> Sous sol Productions </p>
-                                </a>
-                            </article>
-                        </div>
-                    </div>
-                </div>
+                <Partenaires/>
                 <Footer/>
             </main>
         </div>

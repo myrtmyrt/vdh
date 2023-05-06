@@ -32,19 +32,19 @@
 }
 
 
-:root {
-    --primary-color: #212121;
-    --background-color: #111;
-    --font: sans-serif;
-}
+/*:root {*/
+/*    --primary-color: #212121;*/
+/*    --background-color: #111;*/
+/*    --font: sans-serif;*/
+/*}*/
 
 
-body {
-    background: var(--background-color);
-    font-family: var(--font);
-    display: flex;
-    justify-content: center;
-}
+/*body {*/
+/*    background: var(--background-color);*/
+/*    font-family: var(--font);*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*}*/
 
 
 /* Card container */
