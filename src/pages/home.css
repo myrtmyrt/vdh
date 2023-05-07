@@ -42,18 +42,19 @@ h1 {
 
 .point{
     font-weight: bolder;
-    font-size: 26px;
+    /*font-size: 26px;*/
 }
 
 .spanTitle{
-    color : #283619;
     /*font-family: "Avenir Next", sans-serif;*/
     font-weight: bolder;
-    font-size: 55px;
+    /*font-size: 55px;*/
     /* text-transform: uppercase; */
     letter-spacing: 0.05em;
     display: inline-block;
     position: relative;
+
+    @apply text-3xl lg:text-5xl
 }
 
 

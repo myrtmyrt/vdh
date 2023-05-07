@@ -77,7 +77,7 @@ import TimelineSection from "../components/ui/organisms/TimelineSection.astro";
                 <span id="debut"></span>
             </div>
 
-            <span id="presentation"></span>
+            <span id="presentation" class="absolute bottom-20"></span>
             <Header class="absolute object-top z-50"/>
             <main class="bg-white absolute z-30 w-screen overflow-hidden">
                 <section class="pt-12 odd:bg-gray-50">
@@ -87,7 +87,7 @@ import TimelineSection from "../components/ui/organisms/TimelineSection.astro";
                                 <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
                             </filter>
                         </svg>
-                        <span filter-content="L" class="spanTitle pb-0">L'évènement</span>
+                        <span filter-content="L" class="spanTitle pb-0 text-3xl lg:text-5xl">L'évènement</span>
                     </div>
                     <div class="flex flex-col justify-between pb-12">
                         <div>
@@ -114,7 +114,7 @@ import TimelineSection from "../components/ui/organisms/TimelineSection.astro";
                             <br/>
                             <div class="flex md:flex-row flex-col-reverse pt-12 justify-center items-center px-10 md:px-20 gap-20">
                                 <div class="w-full" data-aos="zoom-in-down">
-                                    <iframe class="w-full h-96 max-w-2xl"
+                                    <iframe class="w-full h-56 md:h-96 sm:h-72 max-w-2xl"
                                             src="https://www.youtube.com/embed/sDj9aRUb0pU" title="YouTube video player"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                             allowfullscreen>

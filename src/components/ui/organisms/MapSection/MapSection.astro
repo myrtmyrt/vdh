@@ -21,6 +21,126 @@
     );
     map.setMaxBounds(maxBounds);
 
+    const markers = {
+        'type': 'FeatureCollection',
+        'features': [
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        2.8186302,
+                        49.4163022,
+                        0
+                    ]
+                },
+                "properties": {
+                    "name": "Départ",
+                    "styleUrl": "#icon-1661-0288D1-nodesc",
+                    "styleHash": "-5cbcbabb",
+                    "styleMapHash": "{\"normal\":\"#icon-1661-0288D1-nodesc-normal\",\"highlight\":\"#icon-1661-0288D1-nodesc-highlight\"}",
+                    "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
+                },
+                "id": 0
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        2.7950248,
+                        49.4025439,
+                        0
+                    ]
+                },
+                "properties": {
+                    "name": "Stand 1",
+                    "styleUrl": "#icon-1879-FFD600-nodesc",
+                    "styleHash": "b33a802",
+                    "styleMapHash": "{\"normal\":\"#icon-1879-FFD600-nodesc-normal\",\"highlight\":\"#icon-1879-FFD600-nodesc-highlight\"}",
+                    "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
+                },
+                "id": 7
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        2.7814662,
+                        49.3888395,
+                        0
+                    ]
+                },
+                "properties": {
+                    "name": "Stand 2",
+                    "styleUrl": "#icon-1879-FFD600-nodesc",
+                    "styleHash": "b33a802",
+                    "styleMapHash": "{\"normal\":\"#icon-1879-FFD600-nodesc-normal\",\"highlight\":\"#icon-1879-FFD600-nodesc-highlight\"}",
+                    "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
+                },
+                "id": 5
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        2.7725994,
+                        49.3793025,
+                        0
+                    ]
+                },
+                "properties": {
+                    "name": "Stand 3",
+                    "styleUrl": "#icon-1577-7CB342-nodesc",
+                    "styleHash": "5a4b0cd9",
+                    "styleMapHash": "{\"normal\":\"#icon-1577-7CB342-nodesc-normal\",\"highlight\":\"#icon-1577-7CB342-nodesc-highlight\"}",
+                    "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
+                },
+                "id": 9
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        2.7736911,
+                        49.3729578,
+                        0
+                    ]
+                },
+                "properties": {
+                    "name": "Stand 4",
+                    "styleUrl": "#icon-1879-FFEA00-nodesc",
+                    "styleHash": "-734ba90a",
+                    "styleMapHash": "{\"normal\":\"#icon-1879-FFEA00-nodesc-normal\",\"highlight\":\"#icon-1879-FFEA00-nodesc-highlight\"}",
+                    "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
+                },
+                "id": 10
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        2.764227,
+                        49.372083,
+                        0
+                    ]
+                },
+                "properties": {
+                    "name": "Arrivée",
+                    "styleUrl": "#icon-1661-0288D1-nodesc",
+                    "styleHash": "-5cbcbabb",
+                    "styleMapHash": "{\"normal\":\"#icon-1661-0288D1-nodesc-normal\",\"highlight\":\"#icon-1661-0288D1-nodesc-highlight\"}",
+                    "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
+                },
+                "id": 13
+            },
+        ]
+    }
+
     const circuit = {
         "type": "FeatureCollection",
         "features": [
@@ -986,8 +1106,29 @@
                 'line-cap': 'round'
             },
             paint: {
-                'line-color': '#000',
-                'line-width': 5
+                'line-color': '#D95D39',
+                'line-width': 3
+            }
+        });
+        map.addLayer({
+            id: 'points',
+            type: 'symbol',
+            source: {
+                type: 'geojson',
+                data: markers
+            },
+            'layout': {
+                'icon-image': 'marker',
+                'text-field': ['get', 'name'],
+                'text-font': [
+                    'Open Sans Semibold',
+                    'Arial Unicode MS Bold'
+                ],
+                'text-offset': [0, 1],
+                'text-anchor': 'top'
+            },
+            'paint':  {
+                'text-color': 'white'
             }
         });
     });
