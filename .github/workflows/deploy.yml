@@ -1,0 +1,31 @@
+name: deploy to assos.utc.fr
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-and-deploy:
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+
+        - name: Build
+          run: npm ci && npm run build
+
+        - name: Upload
+          uses: SamKirkland/FTP-Deploy-Action@4.0.0
+          with:
+            server: ${{ secrets.SFTP_SERVER }}
+            username: ${{ secrets.SFTP_USERNAME }}
+            password: ${{ secrets.SFTP_PASSWORD }}
+            port: 22
+            local-dir: dist/
+            server-dir: ~/public_html/
