@@ -22,6 +22,7 @@ import {Icon} from "astro-icon";
 import PresentationLine from "../components/ui/atoms/presentationLine.astro";
 import PricesSection from "../components/ui/organisms/pricesSection.astro";
 import Partenaires from "../components/ui/organisms/Partenaires.astro";
+import TimelineSection from "../components/ui/organisms/TimelineSection.astro";
 ---
 
 <Layout>
@@ -46,10 +47,10 @@ import Partenaires from "../components/ui/organisms/Partenaires.astro";
                 <div id="date"
                      class="fixed left-1/2 -translate-x-1/2 top-28 z-20 text-center text-emerald-950 max-w-5xl">
                     <h1 class="text-5xl mb-1">La Voie du Houblon</h1>
-                    <h1 class="text-5xl mb-1">11 juin 2023</h1>
-                    <h3 class="text-2xl">Un parcours <span class="text-[#D95D39] font-bold"> caritatif</span> de <span
+                    <h1 class="lg:text-5xl md:text-4xl sm:text-3xl text-2xl mb-1">11 juin 2023</h1>
+                    <h3 class="lg:text-2xl text-xl">Un parcours <span class="text-[#D95D39] font-bold"> caritatif</span> de <span
                             class="text-[#D95D39] font-bold"> 10km</span> plein d'<span
-                            class="text-[#D95D39] font-bold">activités</span> à faire en marchant, ou en courant!</h3>
+                            class="text-[#D95D39] font-bold">activités</span> à faire en marchant, ou en courant !</h3>
                 </div>
                 <img
                         id="five"
@@ -78,9 +79,9 @@ import Partenaires from "../components/ui/organisms/Partenaires.astro";
 
             <span id="presentation"></span>
             <Header class="absolute object-top z-50"/>
-            <main class="bg-white absolute z-30 w-screen">
-                <div class="pt-12">
-                    <div class="text-center pb-12 flex flex-row justify-center justify-items-center">
+            <main class="bg-white absolute z-30 w-screen overflow-hidden">
+                <section class="pt-12 odd:bg-gray-50">
+                    <div class="text-center pb-12 flex flex-row justify-center">
                         <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
                             <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
                                 <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
@@ -88,10 +89,10 @@ import Partenaires from "../components/ui/organisms/Partenaires.astro";
                         </svg>
                         <span filter-content="L" class="spanTitle pb-0">L'évènement</span>
                     </div>
-                    <div class="flex flex-col justify-items-start pb-12">
+                    <div class="flex flex-col justify-between pb-12">
                         <div>
-                            <div class="flex flex-row justify-center justify-items-start space-x-20">
-                                <div class="flex flex-col justify-center gap-4">
+                            <div class="flex md:flex-row flex-col-reverse justify-center items-center gap-20 px-12">
+                                <div class="flex flex-col justify-center gap-4 text-2xl">
                                     <PresentationLine iconName="ic:baseline-directions-run">
                                         Un parcours de 10km
                                     </PresentationLine>
@@ -108,10 +109,10 @@ import Partenaires from "../components/ui/organisms/Partenaires.astro";
                                         Un village associatif au départ et à l'arrivée
                                     </PresentationLine>
                                 </div>
-                                <img src={course} class="h-96 object-cover" data-aos="fade-left"/>
+                                <img src={course} class="md:h-96 md:w-auto w-96 object-cover text-center" data-aos="fade-left"/>
                             </div>
                             <br/>
-                            <div class="flex flex-row pt-12 justify-center items-center pr-20 pl-20 gap-20">
+                            <div class="flex md:flex-row flex-col-reverse pt-12 justify-center items-center px-10 md:px-20 gap-20">
                                 <div class="w-full" data-aos="zoom-in-down">
                                     <iframe class="w-full h-96 max-w-2xl"
                                             src="https://www.youtube.com/embed/sDj9aRUb0pU" title="YouTube video player"
@@ -121,45 +122,49 @@ import Partenaires from "../components/ui/organisms/Partenaires.astro";
                                 </div>
                                 <p style="font-size: 16px; line-height: 24px" class="text-black text-justify max-w-xl">
                                     La Voie du Houblon fait son retour le <span class="font-semibold text-primary">dimanche 11 juin 2023</span> pour sa 9e édition ! Le
-                                    parcours reliera les villes de Compiègne et Armancourt en 10 km.
+                                    parcours reliera les villes de Compiègne et Armancourt en 10 km. Le retour s'effectue en <span class="font-semibold text-primary">navette</span>.
                                     <br/>
                                     <br/>
                                     Cette année, nous verserons tous les
-                                    bénéfices au <span class="font-semibold text-primary">Fil d'Ariane</span> (https://www.fil-dariane.org/). Il s'agit d'une
+                                    bénéfices au <a class="font-semibold text-primary" href="https://www.fil-dariane.org/ title="site Fil d'Ariane" target="_blank"">Fil d'Ariane</a>. Il s'agit d'une
                                     association
                                     venant en aide aux <span class="font-semibold text-primary">personnes ayant des déficiences visuelles</span>.
                                     <br/>
                                     <br/>
-                                    Nous vous conseillons de <span class="font-semibold text-primary">venir déguisé e•s</span>!
+                                    Par ailleurs, nous vous conseillons de <span class="font-semibold text-primary">venir déguisé e•s</span>!
                                 </p>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="text-center pb-12 flex flex-row justify-center justify-items-center">
-                    <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
-                        <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
-                            <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
-                        </filter>
-                    </svg>
-                    <span filter-content="S" class="spanTitle">Le parcours</span>
-                </div>
-                <div class="pr-20 pl-20">
-                    <div class="flex flex-row justify-center items-center gap-20">
-                        <p style="font-size: 16px; line-height: 24px" class="text-black text-justify max-w-xl">
-                            Le parcours sera ponctué par <span class="font-semibold text-primary">quatre stands</span> qui proposeront des
-                            dégustations de <span class="font-semibold text-primary">bières</span>ainsi que de la <span class="font-semibold text-primary">nourriture</span> et des boissons fraîches.
-                            <br/>
-                            <br/>
-                            Le parcours peut être effectué <span class="font-semibold text-primary">en courant</span> ou <span class="font-semibold text-primary">en marchant</span> mais également en rollers, en
-                            skateboard, en trottinette, en caddie (le caddie le mieux décoré recevra un lot !) etc.
-                            Seul les engins à moteur sont interdits (trottinettes électriques par exemple) !
-                        </p>
-                        <MapSection/>
-                    </div>
-                </div>
-                <Timeline/>
+                </section>
                 <PricesSection/>
+                <section class="md:py-12 pt-12 odd:bg-gray-50 relative">
+                    <span id="parcours" class="absolute -top-20"></span>
+                    <div class="text-center pb-12 flex md:flex-row flex-col-reverse justify-center justify-items-center">
+                        <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
+                            <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
+                                <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
+                            </filter>
+                        </svg>
+                        <span filter-content="S" class="spanTitle">Le parcours</span>
+                    </div>
+                    <div class="px-10 md:px-20">
+                        <div class="flex md:flex-row flex-col justify-between items-center gap-20">
+                            <p style="font-size: 16px; line-height: 24px" class="text-black text-justify max-w-xl">
+                                Le parcours sera ponctué par <span class="font-semibold text-primary">quatre stands</span> qui proposeront des
+                                dégustations de <span class="font-semibold text-primary">bières</span> ainsi que de la <span class="font-semibold text-primary">nourriture</span> et des boissons fraîches.
+                                <br/>
+                                <br/>
+                                Le parcours peut être effectué <span class="font-semibold text-primary">en courant</span> ou <span class="font-semibold text-primary">en marchant</span> mais également en rollers, en
+                                skateboard, en trottinette, en caddie (le caddie le mieux décoré recevra un lot !), etc.
+                                Seuls les engins à moteur sont interdits (trottinettes électriques par exemple) !
+                            </p>
+                            <MapSection data-aos="fade-left"/>
+                        </div>
+                    </div>
+                </section>
+                <!-- <Timeline/> -->
+                <TimelineSection/>
                 <Questions/>
                 <Partenaires/>
                 <Footer/>

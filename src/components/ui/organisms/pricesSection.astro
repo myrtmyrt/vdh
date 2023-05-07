@@ -1,14 +1,15 @@
 ---
 import PriceItem from "../atoms/priceItem.astro";
 ---
-<div class="flex flex-col justify-center bg-[#D95D39] items-center pt-12 pb-12">
-    <h1 class="text-white pb-2">Tarifs</h1>
-    <h2 class="text-white text-2xl pb-2">Le billet comprend la dégustation de 4 bières, des softs et de la
+<div class="flex flex-col justify-center bg-[#D95D39] items-center pt-12 pb-12 relative">
+    <span id="tarif" class="absolute -top-20"></span>
+    <h1 class="text-white">Les tarifs</h1>
+    <h2 class="text-white text-center text-xl md:text-xl pr-6 pl-6 pb-2">Le billet comprend la dégustation de 4 bières, des softs et de la
         nourriture sur la parcours et la navette retour.</h2>
-    <h2 class="text-white text-2xl pb-2">
+    <h2 class="text-white text-center text-xl md:text-xl pr-6 pl-6 pb-5">
         Le tarif famille correspond à 2 places adultes et 2 places mineurs.
     </h2>
-    <div class="flex flex-row items-center justify-center text-center">
+    <div class="flex flex-wrap items-center justify-center text-center gap-4 md:gap-16">
         <PriceItem>
             Majeur•e<br/>
             16,5€

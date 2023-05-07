@@ -1,6 +1,7 @@
 ---
 import './header.css'
 import logo from "../../../public/logoVdh.png";
+import {Icon} from "astro-icon";
 ---
 
 <header
@@ -16,11 +17,34 @@ import logo from "../../../public/logoVdh.png";
                 href="#debut"
         />
     </a>
-    <div class="flex space-x-4 top-0 left-0 justify-end h-full items-center">
+    <div class="flex space-x-4 top-0 left-0 justify-end h-full items-center lg:max-w-none max-w-0 overflow-hidden">
         <a class="onglet" role="button" href="#presentation">L'évènement</a>
-        <a class="onglet" role="button" href="#presentation" >Le parcours</a>
-        <a class="onglet" role="button" href="#presentation">Village d'arrivée</a>
-        <a class="onglet" role="button" href="#presentation">FAQ</a>
+        <a class="onglet" role="button" href="#tarif">Les tarifs</a>
+        <a class="onglet" role="button" href="#parcours">Le parcours</a>
+        <a class="onglet" role="button" href="#presentation">Le village d'arrivée</a>
+        <a class="onglet" role="button" href="#questions">FAQ</a>
         <button class="button_billeterie" role="button" href="#presentation">Acheter un billet</button>
     </div>
+    <Icon data-mobile-menu-button name="system-uicons:menu-hamburger" class="w-12 h-12 lg:hidden"/>
+    <div id="mobile-menu" class="absolute top-0 left-0 bg-white w-screen h-screen -translate-y-full transition-all ease-out">
+        <div class="w-full h-full relative">
+            <div class="flex flex-col gap-20 absolute pt-16 left-0 justify-center w-full h-full items-center">
+                <a class="text-primary font-semibold" href="#presentation">L'évènement</a>
+                <a class="text-primary font-semibold"  href="#tarif">Les tarifs</a>
+                <a class="text-primary font-semibold"  href="#parcours">Le parcours</a>
+                <a class="text-primary font-semibold"  href="#presentation">Le village d'arrivée</a>
+                <a class="text-primary font-semibold"  href="#questions">FAQ</a>
+                <button class="button_billeterie" role="button" href="#presentation">Acheter un billet</button>
+            </div>
+            <Icon data-mobile-menu-button name="ic:round-close" class="w-12 absolute top-6 right-10"/>
+        </div>
+    </div>
 </header>
+
+<script>
+    const mobileMenuButton = document.querySelectorAll("[data-mobile-menu-button]");
+    const mobileMenu = document.querySelector("#mobile-menu");
+    mobileMenuButton.forEach(elem => elem.addEventListener("click", () => {
+        mobileMenu.classList.toggle("-translate-y-full")
+    }))
+</script>

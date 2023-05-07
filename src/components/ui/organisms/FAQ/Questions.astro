@@ -2,84 +2,54 @@
 import FAQ from "./FAQ.astro";
 ---
 
-<div class="pt-12 pt-12 p-20">
-    <div class="text-center pb-12 flex flex-row justify-center justify-items-center">
+<section class="pt-12 pb-12 pr-6 pl-6 md:pr-20 md:pl-20 relative odd:bg-gray-50">
+    <span id="questions" class="absolute -top-20"></span>
+    <div class="text-center flex flex-row justify-center justify-items-center">
         <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
             <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
                 <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
             </filter>
         </svg>
-        <span filter-content="F" class="spanTitle">Foire aux questions</span>
+        <span filter-content="F" class="spanTitle pb-6">Foire aux questions</span>
     </div>
-    <FAQ
-            question="Où et quand commence la course ?"
-            reponse="Elle commence au niveau du parvis du centre Benjamin Franklin de l’Université de Technologie de Compiègne (Rue Roger Couttolenc). Il faudra être présent à 14h pour un départ à 14h30."
-    />
-    <FAQ
-            question="Ou se termine la course ?"
-            reponse="Elle finit au niveau de la place des Treilles à Armancourt"
-    />
-    <FAQ
-            question="Comment récupérer mon dossard ?"
-            reponse="Au départ de la course au niveau du village de départ."
-    />
-    <FAQ
-            question="Est-ce que le village de départ et le village d’arrivée sont ouverts au public ?"
-            reponse="Oui ils le sont. Attention, l’alcool extérieur, la drogue ou tout objet dangereux (objet tranchant, aérosol,...) sont interdits sur ces villages."
-    />
-    
-    <FAQ
-            question="La course est-elle ouverte aux personnes à mobilité réduite ?"
-            reponse="Malheuresement non, la course n'est pas accessibles aux personnes à mobilité réduite"
-    />
-    
-    <FAQ
-            question="Y aura-t-il un vestiaire pour poser ses affaires ?"
-            reponse="Malheureusement non, n’emmène que le nécessaire!"
-    />
-    
-    <FAQ
-            question="A qui est destinée cette course ?"
-            reponse="La course est destinée à tous : enfants, parents, adolescents, adultes, sénior"
-    />
-    
-    <FAQ
-            question="Que faire s’il m’arrive quelque chose pendant la course ?"
-            reponse="Pas d’inquiétude, une équipe de secourisme sera sur place"
-    />
-    
-    <FAQ
-            question="Si je ne bois pas d’alcool, ai-je le droit à un tarif ?"
-            reponse="Oui, il est possible de prendre le même tarif de 10€ que les mineurs."
-    />
-    <FAQ
-            question="Dois-je fournir un certificat lors de mon inscription ?"
-            reponse=" Non, il ne faut pas de certificat médical."
-    />
-    
-    <FAQ
-            question="La place est-elle remboursable ?"
-            reponse="Non, la place n’est pas remboursable."
-    />
-    
-    <FAQ
-            question="Si je ne veux pas terminer la course, puis-je couper le parcours ?"
-            reponse="Non ce n’est pas possible."
-    />
-    
-    <FAQ
-            question=" Mes enfants peuvent-ils faire la course en vélo, trottinette, roller ou poussette ?"
-            reponse="Oui c’est possible tant que ça n’est pas un véhicule électrique."
-    />
-    
-    <FAQ
-            question=" Y a t il une sécurité?"
-            reponse="Oui, il y aura une sécurité au village de départ et au village d’arrivée afin de fouiller les sacs et contrôler les billets."
-    />
-    
-    <FAQ
-            question="Est-il possible de se perdre ?"
-            reponse="Non, il y aura des signaleurs et de la signalétique tout le long du parcours."
-    />
+    <div class="flex flex-col gap-3">
+        <FAQ
+                question="Comment récupérer mon dossard ?"
+                reponse="Au départ de la course au niveau du village de départ."
+        />
+        <FAQ
+                question="Est-ce que le village de départ et le village d’arrivée sont ouverts au public ?"
+                reponse="Oui ils le sont. Attention, l’alcool extérieur, la drogue ou tout objet dangereux (objet tranchant, aérosol,...) sont interdits sur ces villages."
+        />
+
+        <FAQ
+                question="La course est-elle ouverte aux personnes à mobilité réduite ?"
+                reponse="Malheuresement non, la course n'est pas accessibles aux personnes à mobilité réduite"
+        />
+
+        <FAQ
+                question="Y aura-t-il un vestiaire pour poser ses affaires ?"
+                reponse="Malheureusement non, n’emmène que le nécessaire!"
+        />
+        <FAQ
+                question="Que faire s’il m’arrive quelque chose pendant la course ?"
+                reponse="Pas d’inquiétude, une équipe de secourisme sera sur place"
+        />
+
+        <FAQ
+                question="Si je ne bois pas d’alcool, ai-je le droit à un tarif ?"
+                reponse="Oui, il est possible de prendre le même tarif de 10€ que les mineurs."
+        />
+        <FAQ
+                question="Dois-je fournir un certificat lors de mon inscription ?"
+                reponse=" Non, il ne faut pas de certificat médical."
+        />
+
+        <FAQ
+                question="La place est-elle remboursable ?"
+                reponse="Non, la place n’est pas remboursable."
+        />
+    </div>
+
 
 </div>

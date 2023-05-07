@@ -6,7 +6,8 @@ module.exports = {
 			colors: {
 				myGreen: "#606C38",
 				primary: "#D95D39",
-				secondary: "#283618"
+				secondary: "#283618",
+				tertiary: "#ff9e1f"
 			}
 		},
 	},
