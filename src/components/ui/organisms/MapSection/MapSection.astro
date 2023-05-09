@@ -1,1137 +1,1165 @@
+---
+import mapPlaceholder from "../../../../assets/map-placeholder.jpg"
+---
 <div id="map" class="h-96 md:w-full w-screen overflow-hidden">
+    <img src={mapPlaceholder} />
 </div>
 
 
 <script>
-    import mapboxgl from 'mapbox-gl';
-    mapboxgl.accessToken = 'pk.eyJ1Ijoidm9pZWR1aG91YmxvbiIsImEiOiJjbGc3emx2bTAwYzA5M2twaTRweXRseXIzIn0.QGSfcxLMnxALVfhrit4zVQ';
-    const map = new mapboxgl.Map({
-        container: 'map', // container ID
-        style: 'mapbox://styles/voieduhoublon/clg80m7oj004001latbnf7yqo', // style URL
-        center: [ 2.809818,49.410638 ], // starting position [lng, lat]
-        zoom: 12 // starting zoom
-    });
+    const mapEl = document.getElementById('map');
+    mapEl.addEventListener("mouseenter", async () => {
+        // add script tag with https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js
+        const script = document.createElement('script');
+        script.src = 'https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js';
+        script.async = true;
+        document.head.appendChild(script);
 
-    map.setMaxZoom(15);
-    map.setMinZoom(2);
+        // add link tag with https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css
+        const link = document.createElement('link');
+        link.href = 'https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css';
+        link.rel = 'stylesheet';
 
-    const maxBounds = new mapboxgl.LngLatBounds(
-        new mapboxgl.LngLat(2.75, 49.36), // southwest corner [lng, lat]
-        new mapboxgl.LngLat(2.85, 49.43) // northeast corner [lng, lat]
-    );
-    map.setMaxBounds(maxBounds);
+        // wait for script to load
+        await new Promise((resolve, reject) => {
+            script.onload = resolve;
+            script.onerror = reject;
+        });
 
-    const markers = {
-        'type': 'FeatureCollection',
-        'features': [
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [
-                        2.8186302,
-                        49.4163022,
-                        0
-                    ]
-                },
-                "properties": {
-                    "name": "Départ",
-                    "styleUrl": "#icon-1661-0288D1-nodesc",
-                    "styleHash": "-5cbcbabb",
-                    "styleMapHash": "{\"normal\":\"#icon-1661-0288D1-nodesc-normal\",\"highlight\":\"#icon-1661-0288D1-nodesc-highlight\"}",
-                    "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
-                },
-                "id": 0
-            },
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [
-                        2.7950248,
-                        49.4025439,
-                        0
-                    ]
-                },
-                "properties": {
-                    "name": "Stand 1",
-                    "styleUrl": "#icon-1879-FFD600-nodesc",
-                    "styleHash": "b33a802",
-                    "styleMapHash": "{\"normal\":\"#icon-1879-FFD600-nodesc-normal\",\"highlight\":\"#icon-1879-FFD600-nodesc-highlight\"}",
-                    "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
-                },
-                "id": 7
-            },
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [
-                        2.7814662,
-                        49.3888395,
-                        0
-                    ]
-                },
-                "properties": {
-                    "name": "Stand 2",
-                    "styleUrl": "#icon-1879-FFD600-nodesc",
-                    "styleHash": "b33a802",
-                    "styleMapHash": "{\"normal\":\"#icon-1879-FFD600-nodesc-normal\",\"highlight\":\"#icon-1879-FFD600-nodesc-highlight\"}",
-                    "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
-                },
-                "id": 5
-            },
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [
-                        2.7725994,
-                        49.3793025,
-                        0
-                    ]
-                },
-                "properties": {
-                    "name": "Stand 3",
-                    "styleUrl": "#icon-1577-7CB342-nodesc",
-                    "styleHash": "5a4b0cd9",
-                    "styleMapHash": "{\"normal\":\"#icon-1577-7CB342-nodesc-normal\",\"highlight\":\"#icon-1577-7CB342-nodesc-highlight\"}",
-                    "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
-                },
-                "id": 9
-            },
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [
-                        2.7736911,
-                        49.3729578,
-                        0
-                    ]
-                },
-                "properties": {
-                    "name": "Stand 4",
-                    "styleUrl": "#icon-1879-FFEA00-nodesc",
-                    "styleHash": "-734ba90a",
-                    "styleMapHash": "{\"normal\":\"#icon-1879-FFEA00-nodesc-normal\",\"highlight\":\"#icon-1879-FFEA00-nodesc-highlight\"}",
-                    "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
-                },
-                "id": 10
-            },
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [
-                        2.764227,
-                        49.372083,
-                        0
-                    ]
-                },
-                "properties": {
-                    "name": "Arrivée",
-                    "styleUrl": "#icon-1661-0288D1-nodesc",
-                    "styleHash": "-5cbcbabb",
-                    "styleMapHash": "{\"normal\":\"#icon-1661-0288D1-nodesc-normal\",\"highlight\":\"#icon-1661-0288D1-nodesc-highlight\"}",
-                    "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
-                },
-                "id": 13
-            },
-        ]
-    }
+        // remove placeholder
+        const placeholder = document.getElementById('map');
+        placeholder.innerHTML = '';
 
-    const circuit = {
-        "type": "FeatureCollection",
-        "features": [
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "LineString",
-                    "coordinates": [
-                        [
-                            2.818582,
-                            49.4162698,
-                            0
-                        ],
-                        [
-                            2.8181474,
-                            49.4166589,
-                            0
-                        ],
-                        [
-                            2.8180643,
-                            49.4166781,
-                            0
-                        ],
-                        [
-                            2.8179865,
-                            49.4166642,
-                            0
-                        ],
-                        [
-                            2.8178899,
-                            49.4167305,
-                            0
-                        ],
-                        [
-                            2.8176941,
-                            49.4166485,
-                            0
-                        ],
-                        [
-                            2.8175305,
-                            49.4165438,
-                            0
-                        ],
-                        [
-                            2.8173642,
-                            49.4163989,
-                            0
-                        ],
-                        [
-                            2.8172382,
-                            49.4162594,
-                            0
-                        ],
-                        [
-                            2.8171282,
-                            49.4163344,
-                            0
-                        ],
-                        [
-                            2.816988,
-                            49.4164448,
-                            0
-                        ],
-                        [
-                            2.8164033,
-                            49.4161342,
-                            0
-                        ],
-                        [
-                            2.8157328,
-                            49.4158096,
-                            0
-                        ],
-                        [
-                            2.8151266,
-                            49.4154921,
-                            0
-                        ],
-                        [
-                            2.8141181,
-                            49.4149232,
-                            0
-                        ],
-                        [
-                            2.8128941,
-                            49.4141881,
-                            0
-                        ],
-                        [
-                            2.8127037,
-                            49.4140887,
-                            0
-                        ],
-                        [
-                            2.8123148,
-                            49.413984,
-                            0
-                        ],
-                        [
-                            2.8119768,
-                            49.4138514,
-                            0
-                        ],
-                        [
-                            2.8116979,
-                            49.4137938,
-                            0
-                        ],
-                        [
-                            2.8113143,
-                            49.4136646,
-                            0
-                        ],
-                        [
-                            2.8111695,
-                            49.4136053,
-                            0
-                        ],
-                        [
-                            2.8104292,
-                            49.4134518,
-                            0
-                        ],
-                        [
-                            2.8095065,
-                            49.4132005,
-                            0
-                        ],
-                        [
-                            2.8090666,
-                            49.4130609,
-                            0
-                        ],
-                        [
-                            2.8087072,
-                            49.4129038,
-                            0
-                        ],
-                        [
-                            2.8083371,
-                            49.4127433,
-                            0
-                        ],
-                        [
-                            2.8078632,
-                            49.4125626,
-                            0
-                        ],
-                        [
-                            2.80708,
-                            49.4122974,
-                            0
-                        ],
-                        [
-                            2.8060607,
-                            49.4122695,
-                            0
-                        ],
-                        [
-                            2.8054921,
-                            49.4122415,
-                            0
-                        ],
-                        [
-                            2.8041617,
-                            49.4121368,
-                            0
-                        ],
-                        [
-                            2.8032819,
-                            49.4121019,
-                            0
-                        ],
-                        [
-                            2.8026382,
-                            49.4120461,
-                            0
-                        ],
-                        [
-                            2.801737,
-                            49.4119205,
-                            0
-                        ],
-                        [
-                            2.8011362,
-                            49.4117948,
-                            0
-                        ],
-                        [
-                            2.8008358,
-                            49.4116831,
-                            0
-                        ],
-                        [
-                            2.8005354,
-                            49.4114388,
-                            0
-                        ],
-                        [
-                            2.8002699,
-                            49.4112726,
-                            0
-                        ],
-                        [
-                            2.7999266,
-                            49.4110073,
-                            0
-                        ],
-                        [
-                            2.7997174,
-                            49.410777,
-                            0
-                        ],
-                        [
-                            2.7995404,
-                            49.4105466,
-                            0
-                        ],
-                        [
-                            2.7993419,
-                            49.4102674,
-                            0
-                        ],
-                        [
-                            2.7992721,
-                            49.4100126,
-                            0
-                        ],
-                        [
-                            2.7991327,
-                            49.4097787,
-                            0
-                        ],
-                        [
-                            2.7989003,
-                            49.4093594,
-                            0
-                        ],
-                        [
-                            2.7987877,
-                            49.4090574,
-                            0
-                        ],
-                        [
-                            2.7986858,
-                            49.4087363,
-                            0
-                        ],
-                        [
-                            2.7984658,
-                            49.4082756,
-                            0
-                        ],
-                        [
-                            2.7984202,
-                            49.4081883,
-                            0
-                        ],
-                        [
-                            2.7984107,
-                            49.4079774,
-                            0
-                        ],
-                        [
-                            2.7983919,
-                            49.4079006,
-                            0
-                        ],
-                        [
-                            2.7982686,
-                            49.4075254,
-                            0
-                        ],
-                        [
-                            2.7981291,
-                            49.4071449,
-                            0
-                        ],
-                        [
-                            2.7980325,
-                            49.4068081,
-                            0
-                        ],
-                        [
-                            2.7979387,
-                            49.406398,
-                            0
-                        ],
-                        [
-                            2.7978367,
-                            49.4061815,
-                            0
-                        ],
-                        [
-                            2.7974398,
-                            49.4054991,
-                            0
-                        ],
-                        [
-                            2.7972037,
-                            49.4050907,
-                            0
-                        ],
-                        [
-                            2.7970616,
-                            49.4048272,
-                            0
-                        ],
-                        [
-                            2.7966083,
-                            49.404253,
-                            0
-                        ],
-                        [
-                            2.7958921,
-                            49.4033698,
-                            0
-                        ],
-                        [
-                            2.7954925,
-                            49.4029177,
-                            0
-                        ],
-                        [
-                            2.795176,
-                            49.4026699,
-                            0
-                        ],
-                        [
+        const accessToken = 'pk.eyJ1Ijoidm9pZWR1aG91YmxvbiIsImEiOiJjbGc3emx2bTAwYzA5M2twaTRweXRseXIzIn0.QGSfcxLMnxALVfhrit4zVQ';
+
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/voieduhoublon/clg80m7oj004001latbnf7yqo', // style URL
+            center: [ 2.809818,49.410638 ], // starting position [lng, lat]
+            zoom: 12, // starting zoom
+            accessToken: accessToken
+        });
+
+        map.setMaxZoom(15);
+        map.setMinZoom(2);
+
+        const maxBounds = new mapboxgl.LngLatBounds(
+            new mapboxgl.LngLat(2.75, 49.36), // southwest corner [lng, lat]
+            new mapboxgl.LngLat(2.85, 49.43) // northeast corner [lng, lat]
+        );
+        map.setMaxBounds(maxBounds);
+
+        const markers = {
+            'type': 'FeatureCollection',
+            'features': [
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            2.8186302,
+                            49.4163022,
+                            0
+                        ]
+                    },
+                    "properties": {
+                        "name": "Départ",
+                        "styleUrl": "#icon-1661-0288D1-nodesc",
+                        "styleHash": "-5cbcbabb",
+                        "styleMapHash": "{\"normal\":\"#icon-1661-0288D1-nodesc-normal\",\"highlight\":\"#icon-1661-0288D1-nodesc-highlight\"}",
+                        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
+                    },
+                    "id": 0
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
                             2.7950248,
                             49.4025439,
                             0
                         ]
-                    ]
-                },
-                "properties": {
-                    "name": "Partie 1\n",
-                    "styleUrl": "#line-FF5252-2938-nodesc",
-                    "styleHash": "76265b3d",
-                    "styleMapHash": {
-                        "normal": "#line-FF5252-2938-nodesc-normal",
-                        "highlight": "#line-FF5252-2938-nodesc-highlight"
                     },
-                    "stroke": "#ff5252",
-                    "stroke-opacity": 1,
-                    "stroke-width": 2.938
-                }
-            },
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "LineString",
-                    "coordinates": [
-                        [
-                            2.7950248,
-                            49.4025439,
-                            0
-                        ],
-                        [
-                            2.7940951,
-                            49.4019217,
-                            0
-                        ],
-                        [
-                            2.7931027,
-                            49.4011712,
-                            0
-                        ],
-                        [
-                            2.7924053,
-                            49.4007255,
-                            0
-                        ],
-                        [
-                            2.7919933,
-                            49.4003301,
-                            0
-                        ],
-                        [
-                            2.7916996,
-                            49.4001712,
-                            0
-                        ],
-                        [
-                            2.7912544,
-                            49.3999723,
-                            0
-                        ],
-                        [
-                            2.7898025,
-                            49.3990155,
-                            0
-                        ],
-                        [
-                            2.7884882,
-                            49.3983348,
-                            0
-                        ],
-                        [
-                            2.7873348,
-                            49.397839,
-                            0
-                        ],
-                        [
-                            2.7861171,
-                            49.39727,
-                            0
-                        ],
-                        [
-                            2.7857148,
-                            49.3969976,
-                            0
-                        ],
-                        [
-                            2.7847878,
-                            49.396173,
-                            0
-                        ],
-                        [
-                            2.7840943,
-                            49.395214,
-                            0
-                        ],
-                        [
-                            2.7840514,
-                            49.394837,
-                            0
-                        ],
-                        [
-                            2.7840621,
-                            49.3945018,
-                            0
-                        ],
-                        [
-                            2.7839763,
-                            49.3940758,
-                            0
-                        ],
-                        [
-                            2.7837724,
-                            49.3937616,
-                            0
-                        ],
-                        [
-                            2.7836222,
-                            49.3936359,
-                            0
-                        ],
-                        [
-                            2.7834291,
-                            49.3932728,
-                            0
-                        ],
-                        [
-                            2.7825807,
-                            49.3906952,
-                            0
-                        ],
-                        [
-                            2.7823171,
-                            49.3901226,
-                            0
-                        ],
-                        [
-                            2.7821726,
-                            49.390034,
-                            0
-                        ],
-                        [
-                            2.7820277,
-                            49.3898664,
-                            0
-                        ],
-                        [
-                            2.7819097,
-                            49.3896534,
-                            0
-                        ],
-                        [
-                            2.7817917,
-                            49.3895452,
-                            0
-                        ],
-                        [
-                            2.7817112,
-                            49.3893636,
-                            0
-                        ],
-                        [
-                            2.7816361,
-                            49.3891611,
-                            0
-                        ],
-                        [
-                            2.7815986,
-                            49.3889097,
-                            0
-                        ],
-                        [
-                            2.7815396,
-                            49.3888049,
-                            0
-                        ],
-                        [
+                    "properties": {
+                        "name": "Stand 1",
+                        "styleUrl": "#icon-1879-FFD600-nodesc",
+                        "styleHash": "b33a802",
+                        "styleMapHash": "{\"normal\":\"#icon-1879-FFD600-nodesc-normal\",\"highlight\":\"#icon-1879-FFD600-nodesc-highlight\"}",
+                        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
+                    },
+                    "id": 7
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
                             2.7814662,
                             49.3888395,
                             0
                         ]
-                    ]
-                },
-                "properties": {
-                    "name": "Partie 2\n",
-                    "styleUrl": "#line-FF5252-2938-nodesc",
-                    "styleHash": "76265b3d",
-                    "styleMapHash": {
-                        "normal": "#line-FF5252-2938-nodesc-normal",
-                        "highlight": "#line-FF5252-2938-nodesc-highlight"
                     },
-                    "stroke": "#ff5252",
-                    "stroke-opacity": 1,
-                    "stroke-width": 2.938
-                }
-            },
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "LineString",
-                    "coordinates": [
-                        [
-                            2.7814662,
-                            49.3888395,
-                            0
-                        ],
-                        [
-                            2.7815396,
-                            49.3888049,
-                            0
-                        ],
-                        [
-                            2.7813837,
-                            49.3885391,
-                            0
-                        ],
-                        [
-                            2.7811905,
-                            49.3883435,
-                            0
-                        ],
-                        [
-                            2.7809223,
-                            49.3880083,
-                            0
-                        ],
-                        [
-                            2.7807238,
-                            49.3877778,
-                            0
-                        ],
-                        [
-                            2.7806648,
-                            49.3875893,
-                            0
-                        ],
-                        [
-                            2.7806434,
-                            49.387495,
-                            0
-                        ],
-                        [
-                            2.7802089,
-                            49.3868455,
-                            0
-                        ],
-                        [
-                            2.7798494,
-                            49.3862204,
-                            0
-                        ],
-                        [
-                            2.7795812,
-                            49.3857036,
-                            0
-                        ],
-                        [
-                            2.7795008,
-                            49.3856827,
-                            0
-                        ],
-                        [
-                            2.7782455,
-                            49.3861052,
-                            0
-                        ],
-                        [
-                            2.7778702,
-                            49.3862395,
-                            0
-                        ],
-                        [
-                            2.7777575,
-                            49.3863128,
-                            0
-                        ],
-                        [
-                            2.7777146,
-                            49.3863792,
-                            0
-                        ],
-                        [
-                            2.7776127,
-                            49.386435,
-                            0
-                        ],
-                        [
-                            2.7774947,
-                            49.3864211,
-                            0
-                        ],
-                        [
-                            2.7773927,
-                            49.3863617,
-                            0
-                        ],
-                        [
-                            2.7773337,
-                            49.386222,
-                            0
-                        ],
-                        [
-                            2.777264,
-                            49.3860789,
-                            0
-                        ],
-                        [
-                            2.7771887,
-                            49.3859533,
-                            0
-                        ],
-                        [
-                            2.7771782,
-                            49.3858693,
-                            0
-                        ],
-                        [
-                            2.7771352,
-                            49.3858065,
-                            0
-                        ],
-                        [
-                            2.7770816,
-                            49.3857436,
-                            0
-                        ],
-                        [
-                            2.7769582,
-                            49.3857576,
-                            0
-                        ],
-                        [
-                            2.7767275,
-                            49.385803,
-                            0
-                        ],
-                        [
-                            2.7766845,
-                            49.3857857,
-                            0
-                        ],
-                        [
-                            2.776513,
-                            49.3854398,
-                            0
-                        ],
-                        [
-                            2.7758583,
-                            49.3840606,
-                            0
-                        ],
-                        [
-                            2.7754051,
-                            49.3830516,
-                            0
-                        ],
-                        [
-                            2.7752066,
-                            49.3827128,
-                            0
-                        ],
-                        [
-                            2.7745843,
-                            49.3820283,
-                            0
-                        ],
-                        [
-                            2.7729441,
-                            49.3798962,
-                            0
-                        ],
-                        [
-                            2.7728468,
-                            49.3797832,
-                            0
-                        ],
-                        [
-                            2.7728542,
-                            49.3797157,
-                            0
-                        ],
-                        [
-                            2.7727335,
-                            49.3795395,
-                            0
-                        ],
-                        [
-                            2.7727093,
+                    "properties": {
+                        "name": "Stand 2",
+                        "styleUrl": "#icon-1879-FFD600-nodesc",
+                        "styleHash": "b33a802",
+                        "styleMapHash": "{\"normal\":\"#icon-1879-FFD600-nodesc-normal\",\"highlight\":\"#icon-1879-FFD600-nodesc-highlight\"}",
+                        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
+                    },
+                    "id": 5
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            2.7725994,
                             49.3793025,
                             0
                         ]
-                    ]
-                },
-                "properties": {
-                    "name": "Partie 3\n",
-                    "styleUrl": "#line-FF5252-2938-nodesc",
-                    "styleHash": "76265b3d",
-                    "styleMapHash": {
-                        "normal": "#line-FF5252-2938-nodesc-normal",
-                        "highlight": "#line-FF5252-2938-nodesc-highlight"
                     },
-                    "stroke": "#ff5252",
-                    "stroke-opacity": 1,
-                    "stroke-width": 2.938
-                }
-            },
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "LineString",
-                    "coordinates": [
-                        [
-                            2.7739093,
-                            49.3728221,
-                            0
-                        ],
-                        [
-                            2.7727708,
-                            49.3721262,
-                            0
-                        ],
-                        [
-                            2.7715678,
-                            49.3708295,
-                            0
-                        ],
-                        [
-                            2.7673386,
-                            49.3652878,
-                            0
-                        ],
-                        [
-                            2.7655357,
-                            49.365935,
-                            0
-                        ],
-                        [
-                            2.765297,
-                            49.3659944,
-                            0
-                        ],
-                        [
-                            2.7645058,
-                            49.366094,
-                            0
-                        ],
-                        [
-                            2.7639203,
-                            49.3662225,
-                            0
-                        ],
-                        [
-                            2.763357,
-                            49.3664181,
-                            0
-                        ],
-                        [
-                            2.7628635,
-                            49.3666626,
-                            0
-                        ],
-                        [
-                            2.7624772,
-                            49.3668513,
-                            0
-                        ],
-                        [
-                            2.7622466,
-                            49.3670329,
-                            0
-                        ],
-                        [
-                            2.7620695,
-                            49.3672076,
-                            0
-                        ],
-                        [
-                            2.7621017,
-                            49.3673963,
-                            0
-                        ],
-                        [
-                            2.7637325,
-                            49.3690172,
-                            0
-                        ],
-                        [
-                            2.7637218,
-                            49.369101,
-                            0
-                        ],
-                        [
-                            2.7636243,
-                            49.3691622,
-                            0
-                        ],
-                        [
-                            2.7634527,
-                            49.36926,
-                            0
-                        ],
-                        [
-                            2.7634482,
-                            49.3693246,
-                            0
-                        ],
-                        [
-                            2.7635707,
-                            49.3694556,
-                            0
-                        ],
-                        [
-                            2.7667191,
-                            49.3726326,
-                            0
-                        ],
-                        [
-                            2.7664609,
-                            49.3726999,
-                            0
-                        ],
-                        [
-                            2.7663348,
-                            49.3726702,
-                            0
-                        ],
-                        [
-                            2.7658976,
-                            49.3723017,
-                            0
-                        ],
-                        [
-                            2.7659566,
-                            49.3722702,
-                            0
-                        ],
-                        [
-                            2.7653445,
-                            49.3716261,
-                            0
-                        ],
-                        [
-                            2.7642216,
-                            49.3720777,
+                    "properties": {
+                        "name": "Stand 3",
+                        "styleUrl": "#icon-1577-7CB342-nodesc",
+                        "styleHash": "5a4b0cd9",
+                        "styleMapHash": "{\"normal\":\"#icon-1577-7CB342-nodesc-normal\",\"highlight\":\"#icon-1577-7CB342-nodesc-highlight\"}",
+                        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
+                    },
+                    "id": 9
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            2.7736911,
+                            49.3729578,
                             0
                         ]
-                    ]
-                },
-                "properties": {
-                    "name": "Partie 5\n",
-                    "styleUrl": "#line-FF5252-2938-nodesc",
-                    "styleHash": "76265b3d",
-                    "styleMapHash": {
-                        "normal": "#line-FF5252-2938-nodesc-normal",
-                        "highlight": "#line-FF5252-2938-nodesc-highlight"
                     },
-                    "stroke": "#ff5252",
-                    "stroke-opacity": 1,
-                    "stroke-width": 2.938
-                }
-            },
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "LineString",
-                    "coordinates": [
-                        [
-                            2.7727093,
-                            49.3793025,
-                            0
-                        ],
-                        [
-                            2.7727198,
-                            49.3790719,
-                            0
-                        ],
-                        [
-                            2.7714527,
-                            49.3777395,
-                            0
-                        ],
-                        [
-                            2.7718215,
-                            49.3776225,
-                            0
-                        ],
-                        [
-                            2.776259,
-                            49.3764058,
-                            0
-                        ],
-                        [
-                            2.7749597,
-                            49.3737975,
-                            0
-                        ],
-                        [
-                            2.7743492,
-                            49.3731086,
-                            0
-                        ],
-                        [
-                            2.7739093,
-                            49.3728221,
+                    "properties": {
+                        "name": "Stand 4",
+                        "styleUrl": "#icon-1879-FFEA00-nodesc",
+                        "styleHash": "-734ba90a",
+                        "styleMapHash": "{\"normal\":\"#icon-1879-FFEA00-nodesc-normal\",\"highlight\":\"#icon-1879-FFEA00-nodesc-highlight\"}",
+                        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
+                    },
+                    "id": 10
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            2.764227,
+                            49.372083,
                             0
                         ]
-                    ]
-                },
-                "properties": {
-                    "name": "Partie 4\n",
-                    "styleUrl": "#line-FF5252-2744-nodesc",
-                    "styleHash": "8db1b5d",
-                    "styleMapHash": {
-                        "normal": "#line-FF5252-2744-nodesc-normal",
-                        "highlight": "#line-FF5252-2744-nodesc-highlight"
                     },
-                    "stroke": "#ff5252",
-                    "stroke-opacity": 1,
-                    "stroke-width": 2.744
+                    "properties": {
+                        "name": "Arrivée",
+                        "styleUrl": "#icon-1661-0288D1-nodesc",
+                        "styleHash": "-5cbcbabb",
+                        "styleMapHash": "{\"normal\":\"#icon-1661-0288D1-nodesc-normal\",\"highlight\":\"#icon-1661-0288D1-nodesc-highlight\"}",
+                        "icon": "https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png"
+                    },
+                    "id": 13
+                },
+            ]
+        }
+
+        const circuit = {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [
+                            [
+                                2.818582,
+                                49.4162698,
+                                0
+                            ],
+                            [
+                                2.8181474,
+                                49.4166589,
+                                0
+                            ],
+                            [
+                                2.8180643,
+                                49.4166781,
+                                0
+                            ],
+                            [
+                                2.8179865,
+                                49.4166642,
+                                0
+                            ],
+                            [
+                                2.8178899,
+                                49.4167305,
+                                0
+                            ],
+                            [
+                                2.8176941,
+                                49.4166485,
+                                0
+                            ],
+                            [
+                                2.8175305,
+                                49.4165438,
+                                0
+                            ],
+                            [
+                                2.8173642,
+                                49.4163989,
+                                0
+                            ],
+                            [
+                                2.8172382,
+                                49.4162594,
+                                0
+                            ],
+                            [
+                                2.8171282,
+                                49.4163344,
+                                0
+                            ],
+                            [
+                                2.816988,
+                                49.4164448,
+                                0
+                            ],
+                            [
+                                2.8164033,
+                                49.4161342,
+                                0
+                            ],
+                            [
+                                2.8157328,
+                                49.4158096,
+                                0
+                            ],
+                            [
+                                2.8151266,
+                                49.4154921,
+                                0
+                            ],
+                            [
+                                2.8141181,
+                                49.4149232,
+                                0
+                            ],
+                            [
+                                2.8128941,
+                                49.4141881,
+                                0
+                            ],
+                            [
+                                2.8127037,
+                                49.4140887,
+                                0
+                            ],
+                            [
+                                2.8123148,
+                                49.413984,
+                                0
+                            ],
+                            [
+                                2.8119768,
+                                49.4138514,
+                                0
+                            ],
+                            [
+                                2.8116979,
+                                49.4137938,
+                                0
+                            ],
+                            [
+                                2.8113143,
+                                49.4136646,
+                                0
+                            ],
+                            [
+                                2.8111695,
+                                49.4136053,
+                                0
+                            ],
+                            [
+                                2.8104292,
+                                49.4134518,
+                                0
+                            ],
+                            [
+                                2.8095065,
+                                49.4132005,
+                                0
+                            ],
+                            [
+                                2.8090666,
+                                49.4130609,
+                                0
+                            ],
+                            [
+                                2.8087072,
+                                49.4129038,
+                                0
+                            ],
+                            [
+                                2.8083371,
+                                49.4127433,
+                                0
+                            ],
+                            [
+                                2.8078632,
+                                49.4125626,
+                                0
+                            ],
+                            [
+                                2.80708,
+                                49.4122974,
+                                0
+                            ],
+                            [
+                                2.8060607,
+                                49.4122695,
+                                0
+                            ],
+                            [
+                                2.8054921,
+                                49.4122415,
+                                0
+                            ],
+                            [
+                                2.8041617,
+                                49.4121368,
+                                0
+                            ],
+                            [
+                                2.8032819,
+                                49.4121019,
+                                0
+                            ],
+                            [
+                                2.8026382,
+                                49.4120461,
+                                0
+                            ],
+                            [
+                                2.801737,
+                                49.4119205,
+                                0
+                            ],
+                            [
+                                2.8011362,
+                                49.4117948,
+                                0
+                            ],
+                            [
+                                2.8008358,
+                                49.4116831,
+                                0
+                            ],
+                            [
+                                2.8005354,
+                                49.4114388,
+                                0
+                            ],
+                            [
+                                2.8002699,
+                                49.4112726,
+                                0
+                            ],
+                            [
+                                2.7999266,
+                                49.4110073,
+                                0
+                            ],
+                            [
+                                2.7997174,
+                                49.410777,
+                                0
+                            ],
+                            [
+                                2.7995404,
+                                49.4105466,
+                                0
+                            ],
+                            [
+                                2.7993419,
+                                49.4102674,
+                                0
+                            ],
+                            [
+                                2.7992721,
+                                49.4100126,
+                                0
+                            ],
+                            [
+                                2.7991327,
+                                49.4097787,
+                                0
+                            ],
+                            [
+                                2.7989003,
+                                49.4093594,
+                                0
+                            ],
+                            [
+                                2.7987877,
+                                49.4090574,
+                                0
+                            ],
+                            [
+                                2.7986858,
+                                49.4087363,
+                                0
+                            ],
+                            [
+                                2.7984658,
+                                49.4082756,
+                                0
+                            ],
+                            [
+                                2.7984202,
+                                49.4081883,
+                                0
+                            ],
+                            [
+                                2.7984107,
+                                49.4079774,
+                                0
+                            ],
+                            [
+                                2.7983919,
+                                49.4079006,
+                                0
+                            ],
+                            [
+                                2.7982686,
+                                49.4075254,
+                                0
+                            ],
+                            [
+                                2.7981291,
+                                49.4071449,
+                                0
+                            ],
+                            [
+                                2.7980325,
+                                49.4068081,
+                                0
+                            ],
+                            [
+                                2.7979387,
+                                49.406398,
+                                0
+                            ],
+                            [
+                                2.7978367,
+                                49.4061815,
+                                0
+                            ],
+                            [
+                                2.7974398,
+                                49.4054991,
+                                0
+                            ],
+                            [
+                                2.7972037,
+                                49.4050907,
+                                0
+                            ],
+                            [
+                                2.7970616,
+                                49.4048272,
+                                0
+                            ],
+                            [
+                                2.7966083,
+                                49.404253,
+                                0
+                            ],
+                            [
+                                2.7958921,
+                                49.4033698,
+                                0
+                            ],
+                            [
+                                2.7954925,
+                                49.4029177,
+                                0
+                            ],
+                            [
+                                2.795176,
+                                49.4026699,
+                                0
+                            ],
+                            [
+                                2.7950248,
+                                49.4025439,
+                                0
+                            ]
+                        ]
+                    },
+                    "properties": {
+                        "name": "Partie 1\n",
+                        "styleUrl": "#line-FF5252-2938-nodesc",
+                        "styleHash": "76265b3d",
+                        "styleMapHash": {
+                            "normal": "#line-FF5252-2938-nodesc-normal",
+                            "highlight": "#line-FF5252-2938-nodesc-highlight"
+                        },
+                        "stroke": "#ff5252",
+                        "stroke-opacity": 1,
+                        "stroke-width": 2.938
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [
+                            [
+                                2.7950248,
+                                49.4025439,
+                                0
+                            ],
+                            [
+                                2.7940951,
+                                49.4019217,
+                                0
+                            ],
+                            [
+                                2.7931027,
+                                49.4011712,
+                                0
+                            ],
+                            [
+                                2.7924053,
+                                49.4007255,
+                                0
+                            ],
+                            [
+                                2.7919933,
+                                49.4003301,
+                                0
+                            ],
+                            [
+                                2.7916996,
+                                49.4001712,
+                                0
+                            ],
+                            [
+                                2.7912544,
+                                49.3999723,
+                                0
+                            ],
+                            [
+                                2.7898025,
+                                49.3990155,
+                                0
+                            ],
+                            [
+                                2.7884882,
+                                49.3983348,
+                                0
+                            ],
+                            [
+                                2.7873348,
+                                49.397839,
+                                0
+                            ],
+                            [
+                                2.7861171,
+                                49.39727,
+                                0
+                            ],
+                            [
+                                2.7857148,
+                                49.3969976,
+                                0
+                            ],
+                            [
+                                2.7847878,
+                                49.396173,
+                                0
+                            ],
+                            [
+                                2.7840943,
+                                49.395214,
+                                0
+                            ],
+                            [
+                                2.7840514,
+                                49.394837,
+                                0
+                            ],
+                            [
+                                2.7840621,
+                                49.3945018,
+                                0
+                            ],
+                            [
+                                2.7839763,
+                                49.3940758,
+                                0
+                            ],
+                            [
+                                2.7837724,
+                                49.3937616,
+                                0
+                            ],
+                            [
+                                2.7836222,
+                                49.3936359,
+                                0
+                            ],
+                            [
+                                2.7834291,
+                                49.3932728,
+                                0
+                            ],
+                            [
+                                2.7825807,
+                                49.3906952,
+                                0
+                            ],
+                            [
+                                2.7823171,
+                                49.3901226,
+                                0
+                            ],
+                            [
+                                2.7821726,
+                                49.390034,
+                                0
+                            ],
+                            [
+                                2.7820277,
+                                49.3898664,
+                                0
+                            ],
+                            [
+                                2.7819097,
+                                49.3896534,
+                                0
+                            ],
+                            [
+                                2.7817917,
+                                49.3895452,
+                                0
+                            ],
+                            [
+                                2.7817112,
+                                49.3893636,
+                                0
+                            ],
+                            [
+                                2.7816361,
+                                49.3891611,
+                                0
+                            ],
+                            [
+                                2.7815986,
+                                49.3889097,
+                                0
+                            ],
+                            [
+                                2.7815396,
+                                49.3888049,
+                                0
+                            ],
+                            [
+                                2.7814662,
+                                49.3888395,
+                                0
+                            ]
+                        ]
+                    },
+                    "properties": {
+                        "name": "Partie 2\n",
+                        "styleUrl": "#line-FF5252-2938-nodesc",
+                        "styleHash": "76265b3d",
+                        "styleMapHash": {
+                            "normal": "#line-FF5252-2938-nodesc-normal",
+                            "highlight": "#line-FF5252-2938-nodesc-highlight"
+                        },
+                        "stroke": "#ff5252",
+                        "stroke-opacity": 1,
+                        "stroke-width": 2.938
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [
+                            [
+                                2.7814662,
+                                49.3888395,
+                                0
+                            ],
+                            [
+                                2.7815396,
+                                49.3888049,
+                                0
+                            ],
+                            [
+                                2.7813837,
+                                49.3885391,
+                                0
+                            ],
+                            [
+                                2.7811905,
+                                49.3883435,
+                                0
+                            ],
+                            [
+                                2.7809223,
+                                49.3880083,
+                                0
+                            ],
+                            [
+                                2.7807238,
+                                49.3877778,
+                                0
+                            ],
+                            [
+                                2.7806648,
+                                49.3875893,
+                                0
+                            ],
+                            [
+                                2.7806434,
+                                49.387495,
+                                0
+                            ],
+                            [
+                                2.7802089,
+                                49.3868455,
+                                0
+                            ],
+                            [
+                                2.7798494,
+                                49.3862204,
+                                0
+                            ],
+                            [
+                                2.7795812,
+                                49.3857036,
+                                0
+                            ],
+                            [
+                                2.7795008,
+                                49.3856827,
+                                0
+                            ],
+                            [
+                                2.7782455,
+                                49.3861052,
+                                0
+                            ],
+                            [
+                                2.7778702,
+                                49.3862395,
+                                0
+                            ],
+                            [
+                                2.7777575,
+                                49.3863128,
+                                0
+                            ],
+                            [
+                                2.7777146,
+                                49.3863792,
+                                0
+                            ],
+                            [
+                                2.7776127,
+                                49.386435,
+                                0
+                            ],
+                            [
+                                2.7774947,
+                                49.3864211,
+                                0
+                            ],
+                            [
+                                2.7773927,
+                                49.3863617,
+                                0
+                            ],
+                            [
+                                2.7773337,
+                                49.386222,
+                                0
+                            ],
+                            [
+                                2.777264,
+                                49.3860789,
+                                0
+                            ],
+                            [
+                                2.7771887,
+                                49.3859533,
+                                0
+                            ],
+                            [
+                                2.7771782,
+                                49.3858693,
+                                0
+                            ],
+                            [
+                                2.7771352,
+                                49.3858065,
+                                0
+                            ],
+                            [
+                                2.7770816,
+                                49.3857436,
+                                0
+                            ],
+                            [
+                                2.7769582,
+                                49.3857576,
+                                0
+                            ],
+                            [
+                                2.7767275,
+                                49.385803,
+                                0
+                            ],
+                            [
+                                2.7766845,
+                                49.3857857,
+                                0
+                            ],
+                            [
+                                2.776513,
+                                49.3854398,
+                                0
+                            ],
+                            [
+                                2.7758583,
+                                49.3840606,
+                                0
+                            ],
+                            [
+                                2.7754051,
+                                49.3830516,
+                                0
+                            ],
+                            [
+                                2.7752066,
+                                49.3827128,
+                                0
+                            ],
+                            [
+                                2.7745843,
+                                49.3820283,
+                                0
+                            ],
+                            [
+                                2.7729441,
+                                49.3798962,
+                                0
+                            ],
+                            [
+                                2.7728468,
+                                49.3797832,
+                                0
+                            ],
+                            [
+                                2.7728542,
+                                49.3797157,
+                                0
+                            ],
+                            [
+                                2.7727335,
+                                49.3795395,
+                                0
+                            ],
+                            [
+                                2.7727093,
+                                49.3793025,
+                                0
+                            ]
+                        ]
+                    },
+                    "properties": {
+                        "name": "Partie 3\n",
+                        "styleUrl": "#line-FF5252-2938-nodesc",
+                        "styleHash": "76265b3d",
+                        "styleMapHash": {
+                            "normal": "#line-FF5252-2938-nodesc-normal",
+                            "highlight": "#line-FF5252-2938-nodesc-highlight"
+                        },
+                        "stroke": "#ff5252",
+                        "stroke-opacity": 1,
+                        "stroke-width": 2.938
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [
+                            [
+                                2.7739093,
+                                49.3728221,
+                                0
+                            ],
+                            [
+                                2.7727708,
+                                49.3721262,
+                                0
+                            ],
+                            [
+                                2.7715678,
+                                49.3708295,
+                                0
+                            ],
+                            [
+                                2.7673386,
+                                49.3652878,
+                                0
+                            ],
+                            [
+                                2.7655357,
+                                49.365935,
+                                0
+                            ],
+                            [
+                                2.765297,
+                                49.3659944,
+                                0
+                            ],
+                            [
+                                2.7645058,
+                                49.366094,
+                                0
+                            ],
+                            [
+                                2.7639203,
+                                49.3662225,
+                                0
+                            ],
+                            [
+                                2.763357,
+                                49.3664181,
+                                0
+                            ],
+                            [
+                                2.7628635,
+                                49.3666626,
+                                0
+                            ],
+                            [
+                                2.7624772,
+                                49.3668513,
+                                0
+                            ],
+                            [
+                                2.7622466,
+                                49.3670329,
+                                0
+                            ],
+                            [
+                                2.7620695,
+                                49.3672076,
+                                0
+                            ],
+                            [
+                                2.7621017,
+                                49.3673963,
+                                0
+                            ],
+                            [
+                                2.7637325,
+                                49.3690172,
+                                0
+                            ],
+                            [
+                                2.7637218,
+                                49.369101,
+                                0
+                            ],
+                            [
+                                2.7636243,
+                                49.3691622,
+                                0
+                            ],
+                            [
+                                2.7634527,
+                                49.36926,
+                                0
+                            ],
+                            [
+                                2.7634482,
+                                49.3693246,
+                                0
+                            ],
+                            [
+                                2.7635707,
+                                49.3694556,
+                                0
+                            ],
+                            [
+                                2.7667191,
+                                49.3726326,
+                                0
+                            ],
+                            [
+                                2.7664609,
+                                49.3726999,
+                                0
+                            ],
+                            [
+                                2.7663348,
+                                49.3726702,
+                                0
+                            ],
+                            [
+                                2.7658976,
+                                49.3723017,
+                                0
+                            ],
+                            [
+                                2.7659566,
+                                49.3722702,
+                                0
+                            ],
+                            [
+                                2.7653445,
+                                49.3716261,
+                                0
+                            ],
+                            [
+                                2.7642216,
+                                49.3720777,
+                                0
+                            ]
+                        ]
+                    },
+                    "properties": {
+                        "name": "Partie 5\n",
+                        "styleUrl": "#line-FF5252-2938-nodesc",
+                        "styleHash": "76265b3d",
+                        "styleMapHash": {
+                            "normal": "#line-FF5252-2938-nodesc-normal",
+                            "highlight": "#line-FF5252-2938-nodesc-highlight"
+                        },
+                        "stroke": "#ff5252",
+                        "stroke-opacity": 1,
+                        "stroke-width": 2.938
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "LineString",
+                        "coordinates": [
+                            [
+                                2.7727093,
+                                49.3793025,
+                                0
+                            ],
+                            [
+                                2.7727198,
+                                49.3790719,
+                                0
+                            ],
+                            [
+                                2.7714527,
+                                49.3777395,
+                                0
+                            ],
+                            [
+                                2.7718215,
+                                49.3776225,
+                                0
+                            ],
+                            [
+                                2.776259,
+                                49.3764058,
+                                0
+                            ],
+                            [
+                                2.7749597,
+                                49.3737975,
+                                0
+                            ],
+                            [
+                                2.7743492,
+                                49.3731086,
+                                0
+                            ],
+                            [
+                                2.7739093,
+                                49.3728221,
+                                0
+                            ]
+                        ]
+                    },
+                    "properties": {
+                        "name": "Partie 4\n",
+                        "styleUrl": "#line-FF5252-2744-nodesc",
+                        "styleHash": "8db1b5d",
+                        "styleMapHash": {
+                            "normal": "#line-FF5252-2744-nodesc-normal",
+                            "highlight": "#line-FF5252-2744-nodesc-highlight"
+                        },
+                        "stroke": "#ff5252",
+                        "stroke-opacity": 1,
+                        "stroke-width": 2.744
+                    }
                 }
-            }
-        ]
-    }
+            ]
+        }
 
-    map.on('load', function () {
-        // add the circuit layer to the map
-        map.addLayer({
-            id: 'circuit',
-            type: 'line',
-            source: {
-                type: 'geojson',
-                data: circuit
-            },
-            layout: {
-                'line-join': 'round',
-                'line-cap': 'round'
-            },
-            paint: {
-                'line-color': '#D95D39',
-                'line-width': 3
-            }
+        map.on('load', function () {
+            // add the circuit layer to the map
+            map.addLayer({
+                id: 'circuit',
+                type: 'line',
+                source: {
+                    type: 'geojson',
+                    data: circuit
+                },
+                layout: {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                paint: {
+                    'line-color': '#D95D39',
+                    'line-width': 3
+                }
+            });
+            map.addLayer({
+                id: 'points',
+                type: 'symbol',
+                source: {
+                    type: 'geojson',
+                    data: markers
+                },
+                'layout': {
+                    'icon-image': 'marker',
+                    'text-field': ['get', 'name'],
+                    'text-font': [
+                        'Open Sans Semibold',
+                        'Arial Unicode MS Bold'
+                    ],
+                    'text-offset': [0, 1],
+                    'text-anchor': 'top'
+                },
+                'paint':  {
+                    'text-color': 'white'
+                }
+            });
         });
-        map.addLayer({
-            id: 'points',
-            type: 'symbol',
-            source: {
-                type: 'geojson',
-                data: markers
-            },
-            'layout': {
-                'icon-image': 'marker',
-                'text-field': ['get', 'name'],
-                'text-font': [
-                    'Open Sans Semibold',
-                    'Arial Unicode MS Bold'
-                ],
-                'text-offset': [0, 1],
-                'text-anchor': 'top'
-            },
-            'paint':  {
-                'text-color': 'white'
-            }
-        });
-    });
-
+    }, {once: true});
 </script>
 
