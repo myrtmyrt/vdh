@@ -7,7 +7,11 @@ module.exports = {
 				myGreen: "#606C38",
 				primary: "#D95D39",
 				secondary: "#283618",
-				tertiary: "#ff9e1f"
+				tertiary: "#ff9e1f",
+				lightBlack: "#212121"
+			},
+			fontFamily: {
+				sans: ["Poppins", "sans-serif"]
 			}
 		},
 	},

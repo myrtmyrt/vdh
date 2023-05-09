@@ -2,6 +2,7 @@
 import './header.css'
 import logo from "../../assets/logoVdh.webp";
 import {Icon} from "astro-icon";
+import Button from "./atoms/Button.astro";
 ---
 
 <header
@@ -21,9 +22,10 @@ import {Icon} from "astro-icon";
         <a class="onglet" role="button" href="#presentation">L'évènement</a>
         <a class="onglet" role="button" href="#tarif">Les tarifs</a>
         <a class="onglet" role="button" href="#parcours">Le parcours</a>
-        <!--<a class="onglet" role="button" href="#presentation">Le village d'arrivée</a>-->
         <a class="onglet" role="button" href="#questions">FAQ</a>
-        <a class="button_billeterie" role="button" href="https://assos.utc.fr/woolly/ventes/179">Acheter un billet</a>
+        <Button classes="mr-3">
+            <a href="https://assos.utc.fr/woolly/ventes/179">Acheter un billet</a>
+        </Button>
     </div>
     <Icon data-mobile-menu-button name="system-uicons:menu-hamburger" class="w-12 h-12 lg:hidden"/>
     <div id="mobile-menu" class="absolute top-0 left-0 bg-white w-screen h-screen -translate-y-full transition-all ease-out">
@@ -34,9 +36,9 @@ import {Icon} from "astro-icon";
                 <a class="text-primary font-semibold"  href="#parcours">Le parcours</a>
                 <!--<a class="text-primary font-semibold"  href="#presentation">Le village d'arrivée</a>-->
                 <a class="text-primary font-semibold"  href="#questions">FAQ</a>
-                <a href="https://assos.utc.fr/woolly/ventes/179">
-                    <button class="button_billeterie"  role="button">Acheter un billet</button>
-                </a>
+                <Button>
+                    <a href="https://assos.utc.fr/woolly/ventes/179">Acheter un billet</a>
+                </Button>
             </div>
             <Icon data-mobile-menu-button name="ic:round-close" class="w-12 absolute top-6 right-10"/>
         </div>

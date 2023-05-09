@@ -1,11 +1,12 @@
 ---
 export interface Props {
-    color: "primary" | "secondary"
+    color: "primary" | "secondary",
+    classes: string
 }
-const {color}=Astro.props;
+const {color = "primary", classes = ""} = Astro.props;
 
 ---
 
-<button class={(color == "primary" ? "bg-primary" : "bg-myGreen")+" rounded-full text-white px-4 py-1 w-min hover:-rotate-1 hover:scale-105 transition-all"} >
+<button class={(color == "primary" ? "bg-primary" : "bg-myGreen")+" rounded-full text-white px-4 py-2 w-fit hover:-rotate-1 hover:scale-105 transition-all "+classes} >
     <slot/>
 </button>

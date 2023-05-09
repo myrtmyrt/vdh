@@ -4,6 +4,7 @@ import "./home.css";
 import Header from "../components/ui/header.astro";
 import MapSection from "../components/ui/organisms/MapSection/MapSection.astro";
 import Questions from "../components/ui/organisms/FAQ/Questions.astro";
+import Button from "../components/ui/atoms/Button.astro";
 import Footer from "../components/ui/footer.astro";
 import one from "../assets/1.webp";
 import two from "../assets/2.webp";
@@ -27,24 +28,24 @@ import { YouTube } from '@astro-community/astro-embed-youtube';
     <main class="bg-white">
         <div class="absolute">
             <div class="w-screen h-screen relative overflow-hidden">
-                <img id="one" src={one} alt="background image" class="background z-50 object-cover"/>
-                <img id="two" src={two} alt="background image" class="background z-40 object-cover"/>
+                <img id="one" src={one} alt="background image" class="absolute w-screen h-screen z-50 object-cover"/>
+                <img id="two" src={two} alt="background image" class="absolute w-screen h-screen z-40 object-cover"/>
                 <img
                         id="three"
                         src={three}
                         alt="background image"
-                        class="background z-30 object-cover"
+                        class="absolute w-screen h-screen z-30 object-cover"
                 />
                 <img
                         id="four"
                         src={four}
                         alt="background image"
-                        class="background z-20 object-cover"
+                        class="absolute w-screen h-screen z-20 object-cover"
                 />
                 <div id="date"
                      class="fixed left-1/2 -translate-x-1/2 top-28 z-20 text-center text-emerald-950 max-w-5xl">
-                    <h1 class="text-5xl mb-1">La Voie du Houblon</h1>
-                    <h1 class="lg:text-5xl md:text-4xl sm:text-3xl text-2xl mb-1">11 juin 2023</h1>
+                    <h1 class="text-5xl mb-1 text-lightBlack font-extrabold">La Voie du Houblon</h1>
+                    <h1 class="lg:text-5xl md:text-4xl sm:text-3xl text-2xl mb-1 text-lightBlack font-extrabold">11 juin 2023</h1>
                     <h3 class="lg:text-2xl text-xl">Un parcours <span class="text-[#D95D39] font-bold"> caritatif</span> de <span
                             class="text-[#D95D39] font-bold"> 10km</span> plein d'<span
                             class="text-[#D95D39] font-bold">activités</span> à faire en marchant, ou en courant !</h3>
@@ -53,20 +54,23 @@ import { YouTube } from '@astro-community/astro-embed-youtube';
                         id="five"
                         src={five}
                         alt="background image"
-                        class="background z-10 object-cover"
+                        class="absolute w-screen h-screen z-10 object-cover"
                 />
-                <img id="six" src={six} alt="background image" class="background z-[5] object-cover"/>
+                <img id="six" src={six} alt="background image" class="absolute w-screen h-screen z-[5] object-cover"/>
                 <img
                         id="seven"
                         src={seven}
                         alt="background image"
-                        class="background z-0 object-cover"
+                        class="absolute w-screen h-screen z-0 object-cover"
                 />
 
                 <div class="absolute top-full left-1/2 z-50 -translate-x-1/2 -translate-y-36 flex flex-col items-center gap-10">
-                    <a href="https://assos.utc.fr/woolly/ventes/179">
-                        <button class="button_billeterie text-lg w-52" role="button">Acheter un billet</button>
-                    </a>
+                    <Button>
+                        <a href="https://assos.utc.fr/woolly/ventes/179">
+                            Acheter un billet
+                        </a>
+                    </Button>
+
                     <a href="#presentation">
                         <Icon id="fleche" name="ic:round-expand-more" class="w-12 h-12 text-[#D95D39] animate-bounce"/>
                     </a>
@@ -84,7 +88,7 @@ import { YouTube } from '@astro-community/astro-embed-youtube';
                                 <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
                             </filter>
                         </svg>
-                        <span filter-content="L" class="spanTitle pb-0 text-3xl lg:text-5xl">L'évènement</span>
+                        <h2 filter-content="L" class="title text-3xl lg:text-5xl relative tracking-wider font-bold pb-0 text-3xl lg:text-5xl before:">L'évènement</h2>
                     </div>
                     <div class="flex flex-col justify-between pb-12">
                         <div>
@@ -148,7 +152,7 @@ import { YouTube } from '@astro-community/astro-embed-youtube';
                                 <feGaussianBlur stdDeviation="100 0"></feGaussianBlur>
                             </filter>
                         </svg>
-                        <span filter-content="S" class="spanTitle">Le parcours</span>
+                        <h2 filter-content="S" class="title">Le parcours</h2>
                     </div>
                     <div class="px-10 md:px-20">
                         <div class="flex md:flex-row flex-col justify-between items-center gap-20">
