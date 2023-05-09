@@ -2,10 +2,8 @@
 </div>
 
 
-<script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
-
 <script>
+    import mapboxgl from 'mapbox-gl';
     mapboxgl.accessToken = 'pk.eyJ1Ijoidm9pZWR1aG91YmxvbiIsImEiOiJjbGc3emx2bTAwYzA5M2twaTRweXRseXIzIn0.QGSfcxLMnxALVfhrit4zVQ';
     const map = new mapboxgl.Map({
         container: 'map', // container ID
