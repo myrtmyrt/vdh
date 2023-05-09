@@ -4,7 +4,6 @@ import "./home.css";
 import Header from "../components/ui/header.astro";
 import MapSection from "../components/ui/organisms/MapSection/MapSection.astro";
 import Questions from "../components/ui/organisms/FAQ/Questions.astro";
-import Timeline from "../components/ui/organisms/Timeline/Timeline.astro"
 import Footer from "../components/ui/footer.astro";
 import one from "../assets/1.webp";
 import two from "../assets/2.webp";
@@ -15,12 +14,12 @@ import six from "../assets/6.webp";
 import seven from "../assets/7.webp";
 
 import course from "../../src/assets/course.webp"
-import BeerCursor from "../components/BeerCursor.astro";
 import {Icon} from "astro-icon";
 import PresentationLine from "../components/ui/atoms/presentationLine.astro";
 import PricesSection from "../components/ui/organisms/pricesSection.astro";
 import Partenaires from "../components/ui/organisms/Partenaires.astro";
 import TimelineSection from "../components/ui/organisms/TimelineSection.astro";
+import { YouTube } from '@astro-community/astro-embed-youtube';
 ---
 
 <Layout title="La Voie du Houblon">
@@ -112,6 +111,8 @@ import TimelineSection from "../components/ui/organisms/TimelineSection.astro";
                             <br/>
                             <div class="flex md:flex-row flex-col-reverse pt-12 justify-center items-center px-10 md:px-20 gap-20">
                                 <div class="w-full" data-aos="zoom-in-down">
+                                    <YouTube loading="lazy" id="sDj9aRUb0pU" class="w-full h-56 md:h-96 sm:h-72 max-w-2xl"/>
+                                    <!--
                                     <iframe class="w-full h-56 md:h-96 sm:h-72 max-w-2xl"
                                             src="https://www.youtube.com/embed/sDj9aRUb0pU" title="YouTube video player"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -119,6 +120,7 @@ import TimelineSection from "../components/ui/organisms/TimelineSection.astro";
                                             loading="lazy"
                                     >
                                     </iframe>
+                                    -->
                                 </div>
                                 <p style="font-size: 16px; line-height: 24px" class="text-black text-justify max-w-xl">
                                     La Voie du Houblon fait son retour le <span class="font-semibold text-primary">dimanche 11 juin 2023</span> pour sa 9e édition ! Le
